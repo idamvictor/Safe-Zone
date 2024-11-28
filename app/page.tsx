@@ -1,3 +1,9 @@
+import { ModeToggle } from "@/components/theme-toggle";
+
 export default function Home() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      Hello <ModeToggle />
+    </div>
+  );
 }
