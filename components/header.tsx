@@ -47,8 +47,12 @@
 
 // export default Header;
 
+// ====================================================================================================
+
 import Image from "next/image";
 import { ModeToggle } from "@/components/theme-toggle";
+import { SidebarTrigger } from "./ui/sidebar";
+import { Menu } from "lucide-react";
 
 interface NavigationLink {
   label: string;
@@ -64,32 +68,38 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="flex overflow-hidden flex-wrap gap-5 justify-between px-20 py-1 w-full text-center bg-secondary max-md:px-5 max-md:max-w-full h-[70px]">
+    <header className="bg-secondary w-[100%] h-[70px] items-center">
       {/* Logo Section */}
-      <div className="flex gap-4 justify-center items-center py-5 text-3xl font-semibold tracking-tight leading-none text-primary">
-        <Image
-          src="/logo.ico"
-          alt=""
-          width={39}
-          height={39}
-          className="object-contain shrink-0 self-stretch my-auto aspect-[1.63] w-[39px]"
-        />
-        <div className="self-stretch my-auto">Safe Zone</div>
-      </div>
+      <div className="container mx-auto flex justify-between ">
+        <div className="flex gap-4 justify-center items-center py-5 text-3xl font-semibold tracking-tight leading-none text-primary">
+          <Image
+            src="/logo.ico"
+            alt=""
+            width={39}
+            height={39}
+            className="object-contain shrink-0 self-stretch my-auto aspect-[1.63] "
+          />
+          <div className="self-stretch my-auto">Safe Zone</div>
+        </div>
 
-      {/* Navigation Section */}
-      <div className="flex items-center text-base font-bold tracking-tight leading-none whitespace-nowrap text-muted-foreground">
-        {navigationLinks.map((link, index) => (
-          <div
-            key={index}
-            className={`gap-2.5 self-stretch p-5 my-auto ${
-              link.isActive ? "text-primary" : ""
-            }`}
-          >
-            {link.label}
-          </div>
-        ))}
-        <ModeToggle />
+        {/* Navigation Section */}
+        <div className=" hidden lg:flex md:flex items-center text-base font-bold tracking-tight leading-none whitespace-nowrap text-muted-foreground">
+          {navigationLinks.map((link, index) => (
+            <div
+              key={index}
+              className={`gap-2.5 self-stretch p-5 my-auto ${
+                link.isActive ? "text-primary" : ""
+              }`}
+            >
+              {link.label}
+            </div>
+          ))}
+          <ModeToggle />
+        </div>
+
+        <SidebarTrigger className="lg:hidden md:hidden">
+          <Menu />
+        </SidebarTrigger>
       </div>
     </header>
   );
