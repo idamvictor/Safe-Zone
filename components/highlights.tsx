@@ -44,11 +44,11 @@ export default function Highlights() {
   return (
     <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-28 w-full bg-secondary max-md:px-5 max-md:py-24 max-md:max-w-full">
       <div className="flex flex-col mb-0 max-w-full w-[904px] max-md:mb-2.5">
-        <div className="flex flex-col items-center font-bold max-md:mr-1.5 max-md:max-w-full">
+        <div className="flex flex-col items-center justify-center font-bold max-md:mr-1.5 max-md:max-w-full">
           <div className="text-lg leading-loose text-center text-blue-600">
             REAL-TIME HIGHLIGHTS
           </div>
-          <div className="mt-6 text-5xl leading-none text-secondary-foreground max-md:max-w-full max-md:text-4xl">
+          <div className="mt-6 text-5xl leading-none text-center text-secondary-foreground max-md:max-w-full max-md:text-4xl">
             Safezone is a force for good in the world.
           </div>
         </div>

@@ -27,7 +27,7 @@ const BeInTheLoop = () => {
 
   return (
     <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-48 w-full bg-primary-foreground max-md:px-5 max-md:py-24 max-md:max-w-full">
-      <div className="flex flex-col mb-0 w-full max-w-[1072px] max-md:mb-2.5 max-md:max-w-full">
+      <div className="flex flex-col items-center mb-0 w-full max-w-[1072px] max-md:mb-2.5 max-md:max-w-full">
         <div className="flex flex-col justify-center w-full font-bold text-center max-md:max-w-full">
           <div className="self-center text-sm leading-8 text-blue-600">
             BE IN THE LOOP
@@ -36,7 +36,7 @@ const BeInTheLoop = () => {
             Know the real story faster.
           </div>
         </div>
-        <div className="flex flex-wrap gap-10 items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
+        <div className="flex flex-wrap justify-center gap-10 items-center mt-16 w-full max-md:mt-10 max-md:max-w-full">
           <Image
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/5d6bead6180ebd174903f7fc2b0156fc05b798453494ff8582d6a37ca7e80b2b?placeholderIfAbsent=true&apiKey=6fa44ce921db4247b418bfc7505f2ef0"
             alt=""
@@ -47,13 +47,13 @@ const BeInTheLoop = () => {
           <div className="flex flex-col grow shrink self-stretch my-auto min-w-[240px] w-[527px] max-md:max-w-full">
             {infoCards.map((card, index) => (
               <div key={index} className={index > 0 ? "mt-24" : ""}>
-                <div className="flex flex-wrap gap-7 items-start w-full max-md:mt-10 max-md:max-w-full">
+                <div className="flex gap-5 md:gap-7 items-start w-full max-md:mt-10 max-md:max-w-full">
                   <Image
                     src={card.icon}
                     alt=""
-                    className="object-contain shrink-0 aspect-square rounded-[388px] w-[62px]"
-                    width={62}
-                    height={62}
+                    className="object-contain shrink-0 aspect-square rounded-[388px]"
+                    width={40}
+                    height={40}
                   />
                   <div className="flex flex-col grow shrink min-w-[240px] w-[481px] max-md:max-w-full">
                     <div className="text-xl font-bold text-primary max-md:max-w-full">
