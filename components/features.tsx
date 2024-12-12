@@ -15,14 +15,16 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   description,
 }) => {
   return (
-    <div className="flex flex-col min-w-[240px] w-[369px] text-primary-foreground">
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        className="object-contain z-10 self-center max-w-full rounded-none aspect-square"
-        width={106}
-        height={106}
-      />
+    <div className="flex flex-col self-center min-w-[240px] text-primary-foreground bg-secondary relative rounded-lg">
+      <div className="rounded-lg absolute top-[-37px] self-center bg-white w-[75px] h-[75px] flex justify-center rotate-45  ">
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          className="object-contain z-10  max-w-full rounded-none aspect-square -rotate-45"
+          width={40}
+          height={40}
+        />
+      </div>
       <div className="flex overflow-hidden z-10 flex-col items-center px-6 pt-14 pb-6 w-full rounded-lg max-md:px-5">
         <div className="text-lg font-bold text-muted-foreground">{title}</div>
         <div className="flex gap-0.5 items-start mt-4 w-[19px]">
@@ -85,6 +87,7 @@ const Features: React.FC = () => {
   return (
     <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-28 w-full bg-primary-foreground max-md:px-5 max-md:py-24 max-md:max-w-full">
       <div className="flex flex-col items-center mb-0 w-full max-w-[1140px] max-md:mb-2.5 max-md:max-w-full">
+        {/* Section Header */}
         <div className="flex flex-col items-center max-w-full w-[427px]">
           <div className="text-sm text-blue-600 tracking-[2.8px]">FEATURES</div>
           <div className="mt-4 text-5xl font-medium leading-none text-center text-primary max-md:text-4xl">
@@ -95,21 +98,18 @@ const Features: React.FC = () => {
             sint. Velit officia consequat duis enim velit mollit.
           </div>
         </div>
-        <div className="flex flex-col mt-16 w-full max-md:mt-10 max-md:max-w-full">
-          <div className="flex flex-col w-full max-md:max-w-full">
-            <div className="flex z-10 flex-wrap gap-5 justify-between self-center max-w-full w-[877px]" />
-            <div className="flex z-10 flex-col -mb-8 max-md:mb-2.5 max-md:max-w-full">
-              <div className="grid grid-cols-3 gap-4">
-                {featuresData.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full"
-                  >
-                    <FeatureCard {...feature} />
-                  </div>
-                ))}
+
+        {/* Section Body */}
+        <div className="flex flex-col mt-16 w-full ">
+          <div className="grid md:grid-cols-3  gap-x-4 gap-y-[64px]">
+            {featuresData.map((feature, index) => (
+              <div
+                key={index}
+                className="flex flex-col  max-md:ml-0 max-md:w-full"
+              >
+                <FeatureCard {...feature} />
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
   return (
     <div className="flex overflow-hidden flex-col justify-center px-16 py-12 w-full bg-secondary max-md:px-5 max-md:max-w-full">
       <div className="flex flex-wrap items-center max-md:max-w-full">
-        <div className="flex overflow-hidden flex-col grow shrink items-start self-stretch py-0.5 pr-20 my-auto text-secondary-foreground min-w-[240px] w-[442px] max-md:max-w-full">
+        <div className="flex overflow-hidden flex-col grow shrink items-start self-stretch py-0.5 pr-20  text-secondary-foreground min-w-[240px] w-[442px] max-md:max-w-full">
           <div className="flex flex-col max-w-full w-[248px]">
             <div className="flex gap-4 justify-center items-center self-start py-5 text-3xl font-semibold tracking-tight leading-none text-center">
               <Image
@@ -47,10 +47,8 @@ const Footer: React.FC = () => {
               We watch your back all day!
             </div>
           </div>
-          <div className="mt-40 text-base leading-8 max-md:mt-10">
-            @Copyright 2024.
-          </div>
         </div>
+
         <div className="flex items-center self-stretch my-auto text-base leading-8 text-secondary-foreground whitespace-nowrap min-w-[240px]">
           <div className="flex overflow-hidden flex-col self-stretch px-px pt-1 pb-32 my-auto w-[203px] max-md:pb-24">
             <div className="self-start font-bold">COMPANY</div>
@@ -73,6 +71,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
+
         <div className="flex overflow-hidden flex-col grow shrink items-start self-stretch pt-1 pr-16 pb-48 my-auto min-w-[240px] w-[281px] max-md:pb-24">
           <div className="text-base font-bold leading-8 text-secondary-foreground">
             SOCIALS
@@ -91,6 +90,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className="text-base leading-8 max-md:mt-10">@Copyright 2024.</div>
     </div>
   );
 };
