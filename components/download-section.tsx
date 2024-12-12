@@ -66,7 +66,7 @@ export const DownloadSection: React.FC = () => {
         </div>
 
 
-        <div className="flex flex-wrap justify-center gap-6 items-center self-center mt-12 max-w-full w-[461px] max-md:mt-10">
+        <div className="flex flex-col md:flex-row justify-center gap-6 items-center self-center mt-12 max-w-full  max-md:mt-10">
           {storeData.map((store, index) => (
             <StoreButton
               key={index}

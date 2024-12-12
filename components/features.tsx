@@ -101,11 +101,11 @@ const Features: React.FC = () => {
 
         {/* Section Body */}
         <div className="flex flex-col mt-16 w-full ">
-          <div className="flex flex-wrap gap-x-4 gap-y-[64px]">
+          <div className="grid md:grid-cols-3  gap-x-4 gap-y-[64px]">
             {featuresData.map((feature, index) => (
               <div
                 key={index}
-                className="flex flex-col max-md:ml-0 max-md:w-full"
+                className="flex flex-col  max-md:ml-0 max-md:w-full"
               >
                 <FeatureCard {...feature} />
               </div>
