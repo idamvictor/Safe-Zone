@@ -3,9 +3,9 @@ import * as React from "react";
 
 const TestimonialSection = () => {
   return (
-    <div className="flex overflow-hidden justify-between items-start px-20 py-32 w-full bg-secondary max-md:px-5 max-md:py-24 max-md:max-w-full">
+    <div className="flex flex-col-reverse items-center overflow-hidden justify-center  px-20 py-32 w-full bg-secondary max-md:px-5 max-md:py-24 max-md:max-w-full">
       <div className="flex flex-col mb-0 max-w-full w-[846px] max-md:mb-2.5">
-        <div className="self-start text-5xl font-bold text-secondary-foreground max-md:text-4xl">
+        <div className="self-center text-5xl font-bold text-secondary-foreground max-md:text-4xl">
           Testimonial
         </div>
         <div className="flex flex-col pl-1.5 mt-16 max-md:mt-10 max-md:max-w-full">
@@ -29,7 +29,7 @@ const TestimonialSection = () => {
           </div>
         </div>
       </div>
-      <Image src="/comment.png" alt="comment" width={199} height={183} />
+      <Image src="/comment.png" alt="comment" width={199} height={183} className="p-7 mb-4" />
     </div>
   );
 };
