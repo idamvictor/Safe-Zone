@@ -1,13 +1,3 @@
-// const Highlights = () => {
-//   return (
-//     <section>
-//       <div className="container mx-auto"></div>
-//     </section>
-//   );
-// };
-
-// export default Highlights;
-
 import * as React from "react";
 import Image from "next/image";
 
@@ -62,11 +52,11 @@ export default function Highlights() {
             Safezone is a force for good in the world.
           </div>
         </div>
-        <div className="flex flex-wrap gap-9 items-center mt-11 text-base leading-8 text-center text-muted-foreground max-md:mt-10">
+        <div className="flex gap-3 md:gap-9 items-center mt-11 text-base justify-center leading-8 text-center text-muted-foreground max-md:mt-10 flex-nowrap overflow-x-scroll">
           {highlights.map((highlight, index) => (
             <div
               key={index}
-              className="flex flex-col justify-center self-stretch my-auto w-[152px]"
+              className="flex flex-col justify-center self-stretch my-auto w-[152px] flex-shrink-0"
             >
               <Image
                 src={highlight.imageUrl}

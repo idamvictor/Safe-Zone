@@ -1,77 +1,32 @@
-// import Image from "next/image";
-
-// interface NavigationLink {
-//   label: string;
-//   isActive?: boolean;
-// }
-
-// export const Header: React.FC = () => {
-//   const navigationLinks: NavigationLink[] = [
-//     { label: "HOME", isActive: true },
-//     { label: "EXPLORE" },
-//     { label: "ABOUT" },
-//     { label: "CONTACT" },
-//   ];
-
-//   return (
-//     <header className="flex overflow-hidden flex-wrap gap-5 justify-between px-20 py-1 w-full text-center bg-zinc-900 max-md:px-5 max-md:max-w-full">
-//       {/* Logo Section */}
-//       <div className="flex gap-4 justify-center items-center py-5 text-3xl font-semibold tracking-tight leading-none text-white">
-//         <Image
-//           loading="lazy"
-//           src="https://cdn.builder.io/api/v1/image/assets/TEMP/02d0e470a7140b8270860b53b1a45e284e4ee863a61096d1a360ab7cab2fea71?placeholderIfAbsent=true&apiKey=6fa44ce921db4247b418bfc7505f2ef0"
-//           alt=""
-//           width={39}
-//           height={39}
-//           className="object-contain shrink-0 self-stretch my-auto aspect-[1.63] w-[39px]"
-//         />
-//         <div className="self-stretch my-auto">Safe Zone</div>
-//       </div>
-
-//       {/* Navigation Section */}
-//       <div className="flex items-center text-base font-bold tracking-tight leading-none whitespace-nowrap text-neutral-400">
-//         {navigationLinks.map((link, index) => (
-//           <div
-//             key={index}
-//             className={`gap-2.5 self-stretch p-5 my-auto ${
-//               link.isActive ? "text-white" : ""
-//             }`}
-//           >
-//             {link.label}
-//           </div>
-//         ))}
-//       </div>
-//     </header>
-//   );
-// };
-
-// export default Header;
-
-// ====================================================================================================
+"use client";
 
 import Image from "next/image";
 import { ModeToggle } from "@/components/theme-toggle";
 import { SidebarTrigger } from "./ui/sidebar";
 import { Menu } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavigationLink {
   label: string;
-  isActive?: boolean;
+  url: string;
 }
 
 export const Header: React.FC = () => {
   const navigationLinks: NavigationLink[] = [
-    { label: "HOME", isActive: true },
-    { label: "EXPLORE" },
-    { label: "ABOUT" },
-    { label: "CONTACT" },
+    { label: "HOME", url: "/" },
+    { label: "EXPLORE", url: "/explore" },
+    { label: "ABOUT", url: "/about" },
+    { label: "CONTACT", url: "/contact" },
   ];
+
+  const pathname = usePathname();
 
   return (
     <header className="bg-secondary w-[100%] h-[70px] items-center">
       {/* Logo Section */}
       <div className="container mx-auto flex justify-between ">
-        <div className="flex gap-4 justify-center items-center py-5 text-3xl font-semibold tracking-tight leading-none text-primary">
+        <div className="flex gap-4 justify-center items-center py-5 text-3xl font-semibold tracking-tight leading-none text-primary fill-current">
           <Image
             src="/logo.ico"
             alt=""
@@ -85,14 +40,15 @@ export const Header: React.FC = () => {
         {/* Navigation Section */}
         <div className=" hidden lg:flex md:flex items-center text-base font-bold tracking-tight leading-none whitespace-nowrap text-muted-foreground">
           {navigationLinks.map((link, index) => (
-            <div
+            <Link
+              href={link.url}
               key={index}
               className={`gap-2.5 self-stretch p-5 my-auto ${
-                link.isActive ? "text-primary" : ""
+                pathname === link.url ? "text-primary" : ""
               }`}
             >
               {link.label}
-            </div>
+            </Link>
           ))}
           <ModeToggle />
         </div>
