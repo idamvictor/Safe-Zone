@@ -15,7 +15,7 @@ interface NavigationLink {
 export const Header: React.FC = () => {
   const navigationLinks: NavigationLink[] = [
     { label: "HOME", url: "/" },
-    { label: "EXPLORE", url: "/explore" },
+    // { label: "EXPLORE", url: "/explore" },
     { label: "ABOUT", url: "/about" },
     { label: "CONTACT", url: "/contact" },
   ];
