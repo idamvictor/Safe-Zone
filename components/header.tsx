@@ -15,7 +15,7 @@ interface NavigationLink {
 export const Header: React.FC = () => {
   const navigationLinks: NavigationLink[] = [
     { label: "HOME", url: "/" },
-    { label: "EXPLORE", url: "/explore" },
+    { label: "EXPLORE", url: "/explore/map" },
     { label: "ABOUT", url: "/about" },
     { label: "CONTACT", url: "/contact" },
   ];
@@ -41,10 +41,10 @@ export const Header: React.FC = () => {
           ""
         ) : (
           <div className="flex ">
-            <Link href="" className="px-3 border-r-2 border-white">
+            <Link href="/explore/post" className="px-3 border-r-2 border-white">
               Post
             </Link>
-            <Link href="" className="px-3">
+            <Link href="/explore/map" className="px-3">
               <Map className="inline" /> Explore Map
             </Link>
           </div>

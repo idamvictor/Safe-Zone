@@ -17,7 +17,7 @@ export function AppSidebar() {
     { text: "HOME", url: "/" },
     { text: "ABOUT", url: "/about" },
     { text: "CONTACT", url: "/contact" },
-    { text: "EXPLORE", url: "/explore" },
+    { text: "EXPLORE", url: "/explore/map" },
   ];
 
   const footerNavItems = [
