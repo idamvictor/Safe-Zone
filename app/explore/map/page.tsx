@@ -4,9 +4,9 @@ import { Search } from "lucide-react";
 
 export default function page() {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 p-4">
       <div className="basis-1/3 border-r-4">
-        <div className="  flex items-center">
+        <div className="flex gap-3.5 items-center px-7 w-full text-lg bg-zinc-500 bg-opacity-10 min-h-[44px] rounded-[69px] text-zinc-500">
           <Search />
           <Input type="email" placeholder={`Search`} className="border-none" />
         </div>
@@ -16,30 +16,38 @@ export default function page() {
           <div className="w-full h-[248px] bg-gray-400">image</div>
           <div className="flex justify-between p-3">
             <div>
-              <p>Fire Outbreak at Rumuokoro</p>
-              <p>Fire Outbreak at Rumuokoro</p>
-              <p>23 Alienware, Army Barracks</p>
+              <p className="font-bold">Fire Outbreak at Rumuokoro</p>
+              <p className="text-muted-foreground text-sm">
+                Fire Outbreak at Rumuokoro
+              </p>
+              <p className="text-muted-foreground text-sm">
+                23 Alienware, Army Barracks
+              </p>
             </div>
             <div>
-              <p>12:30 AM</p>
-              <p>0.3 Km</p>
+              <p className="text-muted-foreground text-sm">12:30 AM</p>
+              <p className="text-muted-foreground text-sm">0.3 Km</p>
             </div>
           </div>
 
           {/* the list side  */}
-          <div className="flex items-center">
+          <div className="flex items-center ">
             <div className="image bg-gray-400 w-[48] h-[48]">
               <span>live</span>
             </div>
             <div className="flex justify-between p-3 w-full">
               <div>
-                <p>Fire Outbreak at Rumuokoro</p>
-                <p>Fire Outbreak at Rumuokoro</p>
-                <p>23 Alienware, Army Barracks</p>
+                <p className="font-bold">Fire Outbreak at Rumuokoro</p>
+                <p className="text-muted-foreground text-sm">
+                  Fire Outbreak at Rumuokoro
+                </p>
+                <p className="text-muted-foreground text-sm">
+                  23 Alienware, Army Barracks
+                </p>
               </div>
               <div>
-                <p>12:30 AM</p>
-                <p>0.3 Km</p>
+                <p className="text-muted-foreground text-sm">12:30 AM</p>
+                <p className="text-muted-foreground text-sm">0.3 Km</p>
               </div>
             </div>
           </div>
