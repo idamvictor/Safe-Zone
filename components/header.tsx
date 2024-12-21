@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { ModeToggle } from "@/components/theme-toggle";
 import { SidebarTrigger } from "./ui/sidebar";
-import { Menu } from "lucide-react";
+import { Map, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -15,7 +15,7 @@ interface NavigationLink {
 export const Header: React.FC = () => {
   const navigationLinks: NavigationLink[] = [
     { label: "HOME", url: "/" },
-    // { label: "EXPLORE", url: "/explore" },
+    { label: "EXPLORE", url: "/explore/map" },
     { label: "ABOUT", url: "/about" },
     { label: "CONTACT", url: "/contact" },
   ];
@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
   return (
     <header className="bg-secondary w-[100%] h-[70px] items-center">
       {/* Logo Section */}
-      <div className="container mx-auto flex justify-between ">
+      <div className="container mx-auto flex justify-between items-center ">
         <div className="flex gap-4 justify-center items-center py-5 text-3xl font-semibold tracking-tight leading-none text-primary fill-current">
           <Image
             src="/logo.ico"
@@ -36,6 +36,19 @@ export const Header: React.FC = () => {
           />
           <div className="self-stretch my-auto">Safe Zone</div>
         </div>
+
+        {pathname === "/" ? (
+          ""
+        ) : (
+          <div className="flex ">
+            <Link href="/explore/post" className="px-3 border-r-2 border-white">
+              Post
+            </Link>
+            <Link href="/explore/map" className="px-3">
+              <Map className="inline" /> Explore Map
+            </Link>
+          </div>
+        )}
 
         {/* Navigation Section */}
         <div className=" hidden lg:flex md:flex items-center text-base font-bold tracking-tight leading-none whitespace-nowrap text-muted-foreground">
