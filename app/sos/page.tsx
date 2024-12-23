@@ -11,7 +11,7 @@ export default function Page() {
 
 
   return (
-    <div>
+    <div className='container mx-auto'>
       {/* <DynamicMap position={[latitude, longitude]} /> */}
       <div>
         <div>

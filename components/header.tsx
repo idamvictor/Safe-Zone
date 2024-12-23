@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
     { label: "HOME", url: "/" },
     { label: "EXPLORE", url: "/explore/map" },
     { label: "ABOUT", url: "/about" },
-    { label: "CONTACT", url: "/contact" },
+    { label: "SOS", url: "/sos" },
   ];
 
   const pathname = usePathname();
