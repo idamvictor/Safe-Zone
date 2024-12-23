@@ -8,12 +8,12 @@ import DownloadSection from "@/components/download-section";
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <Highlights />
-      <BeInTheLoop />
-      <TestimonialSection />
-      <Features />
-      <DownloadSection />
+        <HeroSection />
+        <Highlights />
+        <BeInTheLoop />
+        <TestimonialSection />
+        <Features />
+        <DownloadSection />
     </>
   );
 }
