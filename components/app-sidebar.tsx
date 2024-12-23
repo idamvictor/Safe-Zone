@@ -16,7 +16,7 @@ export function AppSidebar() {
   const mainNavItems = [
     { text: "HOME", url: "/" },
     { text: "ABOUT", url: "/about" },
-    { text: "CONTACT", url: "/contact" },
+    { text: "SOS", url: "/sos" },
     { text: "EXPLORE", url: "/explore/map" },
   ];
 
