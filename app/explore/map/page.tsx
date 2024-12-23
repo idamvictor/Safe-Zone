@@ -1,11 +1,14 @@
+'use client'
 import { Input } from "@/components/ui/input";
-import Map from "@/components/ui/map";
 import { Search } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const DynamicMap = dynamic(() => import("@/components/map"), { ssr: false });
 
 export default function page() {
   return (
-    <div className="flex gap-3 p-4">
-      <div className="basis-1/3 border-r-4">
+    <div className=" flex flex-col-reverse md:flex-row gap-3 p-4">
+      <div className="basis-1/3">
         <div className="flex gap-3.5 items-center px-7 w-full text-lg bg-zinc-500 bg-opacity-10 min-h-[44px] rounded-[69px] text-zinc-500">
           <Search />
           <Input type="email" placeholder={`Search`} className="border-none" />
@@ -56,7 +59,7 @@ export default function page() {
 
       {/* map section */}
       <div className=" basis-2/3 border-l-4">
-        <Map />
+        <DynamicMap />
       </div>
     </div>
   );

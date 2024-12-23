@@ -6,10 +6,10 @@ const HeroSection = () => {
       <div className="container mx-auto md:flex items-center justify-center gap-8 self-center p-4">
         <div className="flex flex-col mb-0 basis-1/2">
           <div className="max-w-[552px] mx-auto">
-            <h1 className="text-6xl font-bold">
-              We have your back any time, anywhere{" "}
+            <h1 className="text-4xl md:text-6xl font-bold">
+              We have <br /> your back any <br /> time, anywhere{" "}
             </h1>
-            <p className="mt-14 text-xl leading-8 max-md:mt-10 max-md:max-w-full">
+            <p className="mt-14 text-[16px] md:text-xl md:leading-8 max-md:mt-10 max-md:max-w-full">
               Lorem ipsum dolor sit amet consectetur. Rhoncus at turpis in
               tincidunt sagittis sit. Mattis aliquet a turpis at vestibulum nunc
               vestibulum elit. Tristique felis lacus dignissim tortor accumsan

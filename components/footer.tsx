@@ -33,11 +33,11 @@ const Footer: React.FC = () => {
       <div className="flex flex-wrap items-center max-md:max-w-full">
         <div className="flex overflow-hidden flex-col grow shrink items-start self-stretch py-0.5 pr-20  text-secondary-foreground min-w-[240px] w-[442px] max-md:max-w-full">
           <div className="flex flex-col max-w-full w-[248px]">
-            <div className="flex gap-4 justify-center items-center self-start py-5 text-3xl font-semibold tracking-tight leading-none text-center">
+            <div className="flex gap-4 justify-center items-center self-start py-5 text-[16px] md:text-3xl font-semibold tracking-tight leading-none text-center">
               <Image
                 src="/logo.ico"
                 alt="Safe Zone Logo"
-                className="object-contain shrink-0 self-stretch my-auto aspect-[1.63]"
+                className="object-contain shrink-0 self-stretch my-auto aspect-[1.63] w-[24px] h-[24px] md:w-[39px] md:h-[39px]"
                 width={39}
                 height={39}
               />

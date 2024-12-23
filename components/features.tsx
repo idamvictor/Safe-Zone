@@ -90,7 +90,7 @@ const Features: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col items-center max-w-full w-[427px]">
           <div className="text-sm text-blue-600 tracking-[2.8px]">FEATURES</div>
-          <div className="mt-4 text-5xl font-medium leading-none text-center text-primary max-md:text-4xl">
+          <div className="mt-4 text-[38px] md:text-5xl font-medium leading-none text-center text-primary max-md:text-4xl">
             Best Features
           </div>
           <div className="mt-4 text-base text-center text-muted-foreground text-opacity-50 max-md:max-w-full">

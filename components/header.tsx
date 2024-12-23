@@ -25,14 +25,14 @@ export const Header: React.FC = () => {
   return (
     <header className="bg-secondary w-[100%] h-[70px] items-center">
       {/* Logo Section */}
-      <div className="container mx-auto flex justify-between items-center ">
-        <div className="flex gap-4 justify-center items-center py-5 text-3xl font-semibold tracking-tight leading-none text-primary fill-current">
+      <div className="px-3 md:container mx-auto flex justify-between items-center ">
+        <div className="flex gap-4 justify-center items-center py-5 text-[16px] md:text-3xl font-semibold tracking-tight leading-none text-primary fill-current">
           <Image
             src="/logo.ico"
             alt=""
             width={39}
             height={39}
-            className="object-contain shrink-0 self-stretch my-auto aspect-[1.63] "
+            className="object-contain shrink-0 self-stretch my-auto aspect-[1.63] w-[24px] h-[24px] md:w-[39px] md:h-[39px]"
           />
           <div className="self-stretch my-auto">Safe Zone</div>
         </div>
