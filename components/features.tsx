@@ -88,8 +88,10 @@ const Features: React.FC = () => {
     <div className="flex overflow-hidden flex-col justify-center items-center px-20 py-28 w-full bg-primary-foreground max-md:px-5 max-md:py-24 max-md:max-w-full">
       <div className="flex flex-col items-center mb-0 w-full max-w-[1140px] max-md:mb-2.5 max-md:max-w-full">
         {/* Section Header */}
-        <div className="flex flex-col items-center max-w-full w-[427px]">
-          <div className="text-sm text-blue-600 tracking-[2.8px]">FEATURES</div>
+        <div className="intersect:motion-preset-fade-lg intersect:motion-delay-500 flex flex-col items-center max-w-full w-[427px]">
+          <div className=" text-sm text-blue-600 tracking-[2.8px]">
+            FEATURES
+          </div>
           <div className="mt-4 text-[38px] md:text-5xl font-medium leading-none text-center text-primary max-md:text-4xl">
             Best Features
           </div>
@@ -100,7 +102,7 @@ const Features: React.FC = () => {
         </div>
 
         {/* Section Body */}
-        <div className="flex flex-col mt-16 w-full ">
+        <div className="intersect:motion-preset-fade-lg intersect:motion-delay-700 pt-[150px] flex flex-col w-full ">
           <div className="grid md:grid-cols-3  gap-x-4 gap-y-[64px]">
             {featuresData.map((feature, index) => (
               <div

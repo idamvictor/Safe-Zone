@@ -1,23 +1,44 @@
-"use client";
-import React from "react";
-import dynamic from "next/dynamic";
-import { useGeolocation } from "@/context/GeolocationContext";
+// // pages/your-page.tsx
+// import { GetServerSideProps } from "next";
+// import axiosInstance from "@/lib/axios"; // Import your custom Axios instance
 
-const Map = dynamic(() => import("@/components/map"), { ssr: false });
+// interface Data {
+//   // Define the type of the data you're fetching
+//   id: number;
+//   name: string;
+// }
 
-export default function Page() {
-  const { latitude, longitude } = useGeolocation();
+// interface Props {
+//   data: Data;
+// }
 
-  return (
-    <div>
-      <div>
-        Your current longitude and latitude is:
-        <p>{latitude !== null ? latitude : "Loading..."}</p>
-        <p>{longitude !== null ? longitude : "Loading..."}</p>
-      </div>
-      {latitude !== null && longitude !== null && (
-        <Map position={[latitude, longitude]} />
-      )}
-    </div>
-  );
-}
+// const YourPage: React.FC<Props> = ({ data }) => {
+//   return (
+//     <div>
+//       <h1>{data.name}</h1>
+//       <p>ID: {data.id}</p>
+//     </div>
+//   );
+// };
+
+// // Fetch data server-side with getServerSideProps
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   try {
+//     const response = await axiosInstance.get("/your-endpoint"); // Use your custom Axios instance
+
+//     return {
+//       props: {
+//         data: response.data, // Pass the fetched data to your page
+//       },
+//     };
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//     return {
+//       props: {
+//         data: null, // In case of error, pass null or handle the error appropriately
+//       },
+//     };
+//   }
+// };
+
+// export default YourPage;

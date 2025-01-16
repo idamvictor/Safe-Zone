@@ -34,11 +34,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <GeolocationProvider>
-            <SidebarProvider>
+            <SidebarProvider className="flex flex-col">
               <Header />
               <AppSidebar />
+
+              {children}
             </SidebarProvider>
-            {children}
           </GeolocationProvider>
           <Footer />
         </ThemeProvider>
