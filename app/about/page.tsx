@@ -4,7 +4,7 @@ import { Statistics } from "@/components/about/statistics";
 import DownloadSection from "@/components/download-section";
 
 export default function page() {
-  return <div>
+  return <div className="motion-preset-slide-right-md">
     <Hero />
     <MapSection />
     <Statistics />

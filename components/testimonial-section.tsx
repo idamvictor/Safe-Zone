@@ -9,7 +9,7 @@ const TestimonialSection = () => {
           Testimonial
         </div>
         <div className="flex flex-col pl-1.5 mt-16 max-md:mt-10 max-md:max-w-full">
-          <div className="text-lg text-muted-foreground max-md:max-w-full">
+          <div className="text-lg text-muted-foreground max-md:max-w-full intersect:motion-preset-shake">
             Lorem ipsum dolor sit amet consectetur. Dignissim ut varius in
             suspendisse. Sed tristique cras ultricies integer felis faucibus
             turpis. Vel volutpat suspendisse ligula turpis adipiscing vitae
@@ -29,7 +29,13 @@ const TestimonialSection = () => {
           </div>
         </div>
       </div>
-      <Image src="/comment.png" alt="comment" width={199} height={183} className="p-7 mb-4 self-center" />
+      <Image
+        src="/comment.png"
+        alt="comment"
+        width={199}
+        height={183}
+        className="p-7 mb-4 self-center intersect:motion-preset-wobble-sm"
+      />
     </div>
   );
 };

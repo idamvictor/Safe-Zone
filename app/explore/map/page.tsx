@@ -7,7 +7,7 @@ const DynamicMap = dynamic(() => import("@/components/map"), { ssr: false });
 
 export default function page() {
   return (
-    <div className=" flex flex-col-reverse md:flex-row gap-3 p-4">
+    <div className=" flex flex-col-reverse md:flex-row gap-3 p-4 motion-preset-slide-right-md">
       <div className="basis-1/3">
         <div className="flex gap-3.5 items-center px-7 w-full text-lg bg-zinc-500 bg-opacity-10 min-h-[44px] rounded-[69px] text-zinc-500">
           <Search />

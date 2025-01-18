@@ -7,13 +7,13 @@ import DownloadSection from "@/components/download-section";
 
 export default function Home() {
   return (
-    <>
-        <HeroSection />
-        <Highlights />
-        <BeInTheLoop />
-        <TestimonialSection />
-        <Features />
-        <DownloadSection />
-    </>
+    <div className="motion-preset-slide-right-md">
+      <HeroSection />
+      <Highlights />
+      <BeInTheLoop />
+      <TestimonialSection />
+      <Features />
+      <DownloadSection />
+    </div>
   );
 }

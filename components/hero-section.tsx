@@ -4,9 +4,9 @@ const HeroSection = () => {
   return (
     <section>
       <div className="container mx-auto md:flex items-center justify-center gap-8 self-center p-4">
-        <div className="flex flex-col mb-0 basis-1/2">
+        <div className="flex flex-col mb-0 basis-1/2 intersect:motion-preset-slide-right-lg motion-duration-1500 motion-ease-spring-bouncy">
           <div className="max-w-[552px] mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold">
+            <h1 className="text-4xl md:text-6xl font-bold motion-preset-typewriter-[14] motion-duration-[5s]">
               We have <br /> your back any <br /> time, anywhere{" "}
             </h1>
             <p className="mt-14 text-[16px] md:text-xl md:leading-8 max-md:mt-10 max-md:max-w-full">
@@ -22,7 +22,7 @@ const HeroSection = () => {
           alt="Hero Image"
           width={392}
           height={882}
-          className="mx-auto my-0"
+          className="mx-auto my-0 intersect:motion-preset-slide-left-lg motion-duration-1500 motion-ease-spring-bouncy"
         />
       </div>
     </section>
