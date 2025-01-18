@@ -7,6 +7,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { GeolocationProvider } from "@/context/GeolocationContext";
+import ObserverProvider from "@/context/ObserverProvider";
 
 const roboto = Roboto({
   weight: "400",
@@ -33,15 +34,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <GeolocationProvider>
-            <SidebarProvider className="flex flex-col">
-              <Header />
-              <AppSidebar />
+          <ObserverProvider>
+            <GeolocationProvider>
+              <SidebarProvider className="flex flex-col">
+                <Header />
+                <AppSidebar />
 
-              {children}
-            </SidebarProvider>
-          </GeolocationProvider>
-          <Footer />
+                {children}
+              </SidebarProvider>
+            </GeolocationProvider>
+            <Footer />
+          </ObserverProvider>
         </ThemeProvider>
       </body>
     </html>
