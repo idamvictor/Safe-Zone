@@ -9,6 +9,8 @@ export default async function Page({
   const id = (await params).id;
 return (
   <div className=" container mx-auto flex gap-4">
+    {/* i hid the id here */}
+    <div className="hidden">{id}</div>
     <div className="basis-5/6">
       <VideoPlayer />
     </div>
