@@ -15,47 +15,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-// import { Home, Search, Plus, MessageSquare, User } from "lucide-react";
 
 export default function VideoPlayer() {
   const [showComments, setShowComments] = useState(false);
 
   return (
     <div className="flex flex-col h-screen bg-black text-white">
-      {/* <Header /> */}
       <main className="flex-grow overflow-hidden relative">
         <VideoContent onCommentClick={() => setShowComments(true)} />
         {showComments && (
           <CommentSection onClose={() => setShowComments(false)} />
         )}
       </main>
-      {/* <Footer /> */}
     </div>
   );
 }
 
-// function Header() {
-//   return (
-//     <header className="flex justify-between items-center p-4">
-//       <div className="flex items-center space-x-2">
-//         <Image
-//           src="/placeholder.svg?height=40&width=40"
-//           alt="User Avatar"
-//           width={40}
-//           height={40}
-//           className="rounded-full"
-//         />
-//         <div>
-//           <h2 className="font-bold">brainjotter</h2>
-//           <p className="text-sm text-gray-400">Brain Jotter</p>
-//         </div>
-//       </div>
-//       <button className="bg-red-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-//         Follow
-//       </button>
-//     </header>
-//   );
-// }
 
 function VideoContent({ onCommentClick }: { onCommentClick: () => void }) {
   return (
@@ -76,7 +51,7 @@ function VideoContent({ onCommentClick }: { onCommentClick: () => void }) {
           objectFit="cover"
           width={412}
           height={737}
-          className="max-w-[412] h-[737] object-cover rounded-xl"
+          className="w-full md:max-w-[412] h-[737] object-cover rounded-xl"
         />
 
         <div className="absolute bottom-0 left-0 right-0 p-4">
@@ -92,13 +67,13 @@ function VideoContent({ onCommentClick }: { onCommentClick: () => void }) {
 
         {/* Action Buttons */}
         <div className="absolute bottom-20 right-4 flex flex-col items-center space-y-4 md:hidden">
-          <ActionButton icon={<Heart size={30} />} label="1.5M" />
+          <ActionButton icon={<Heart size={24} />} label="1.5M" />
           <ActionButton
-            icon={<MessageCircle size={30} />}
+            icon={<MessageCircle size={24} />}
             label="3315"
             onClick={onCommentClick}
           />
-          <ActionButton icon={<Share2 size={30} />} label="5118" />
+          <ActionButton icon={<Share2 size={24} />} label="5118" />
         </div>
 
         {/* Up and Down control buttons */}
@@ -128,46 +103,6 @@ function ActionButton({
   );
 }
 
-// function Footer() {
-//   return (
-//     <footer className="flex justify-around py-2 border-t border-gray-800">
-//       <FooterButton label="Home" icon={<Home size={24} />} active />
-//       <FooterButton label="Discover" icon={<Search size={24} />} />
-//       <FooterButton label="+" icon={<Plus size={32} />} special />
-//       <FooterButton label="Inbox" icon={<MessageSquare size={24} />} />
-//       <FooterButton label="Profile" icon={<User size={24} />} />
-//     </footer>
-//   );
-// }
-
-// function FooterButton({
-//   label,
-//   icon,
-//   active = false,
-//   special = false,
-// }: {
-//   label: string;
-//   icon: React.ReactNode;
-//   active?: boolean;
-//   special?: boolean;
-// }) {
-//   return (
-//     <button
-//       className={`flex flex-col items-center ${
-//         active ? "text-white" : "text-gray-400"
-//       }`}
-//     >
-//       {special ? (
-//         <div className="bg-gradient-to-r from-blue-500 to-red-500 p-1 rounded-md">
-//           {icon}
-//         </div>
-//       ) : (
-//         icon
-//       )}
-//       <span className="text-xs mt-1">{label}</span>
-//     </button>
-//   );
-// }
 
 function CommentSection({ onClose }: { onClose: () => void }) {
   return (

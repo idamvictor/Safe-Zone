@@ -2,6 +2,7 @@
 
 import { Search } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface IncidentItem {
   title: string;
@@ -91,7 +92,7 @@ export default function IncidentFeed() {
         {/* Incident List */}
         <div className="space-y-2 px-4">
           {incidents.map((incident, index) => (
-            <div key={index} className="flex gap-3">
+            <Link href='/explore/1' key={index} className="flex gap-3">
               <div className="relative w-24 h-16 flex-shrink-0">
                 <Image
                   src={incident.imageUrl || "/placeholder.svg"}
@@ -114,7 +115,7 @@ export default function IncidentFeed() {
                 <p>{incident.time}</p>
                 <p>{incident.distance}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
