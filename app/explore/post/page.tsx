@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function page() {
   return (
-    <div className="flex bg-black text-white">
+    <div className="flex bg-black text-white motion-preset-slide-right-md">
       {/* Desktop Sidebar */}
       <div className="hidden md:flex w-64 p-4 flex-col border-r border-zinc-800">
         <SidebarContent />
