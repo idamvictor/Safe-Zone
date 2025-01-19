@@ -1,280 +1,156 @@
-// 'use client'
-// import React, { useState } from "react";
-// import StoreButton from "@/components/store-button";
-// import { Input } from "@/components/ui/input";
-// import {
-//   CircleHelp,
-//   Compass,
-//   Play,
-//   Search,
-//   Video,
-//   Menu,
-//   X,
-// } from "lucide-react";
-
-// export default function Page() {
-//   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-//   const toggleSidebar = () => {
-//     setSidebarOpen(!sidebarOpen);
-//   };
-
-//   return (
-//     <div className="motion-preset-slide-right container mx-auto my-[64px]">
-//       {/* Sidebar Trigger Button */}
-//       <button
-//         className="md:hidden fixed top-[85px] left-4 z-50 bg-blue-500 text-white p-2 rounded"
-//         onClick={toggleSidebar}
-//       >
-//         {sidebarOpen ? <X /> : <Menu />}
-//       </button>
-
-//       <div className="flex gap-3 relative">
-//         {/* Sidebar */}
-//         <div
-//           className={`fixed md:relative inset-y-0 left-0 transform ${
-//             sidebarOpen ? "translate-x-0" : "-translate-x-full"
-//           } md:translate-x-0 md:flex md:basis-1/3 flex-col h-screen shadow-lg transition-transform duration-300 ease-in-out z-40 md:z-0 md:static`}
-//         >
-//           <PostSidebar />
-//         </div>
-
-//         {/* Main section */}
-//         <div
-//           className={`flex-1 md:basis-2/3 ${
-//             sidebarOpen ? "ml-[0px]" : "ml-[0px]"
-//           }`}
-//         >
-//           <PostMain />
-//         </div>
-//       </div>
-
-//       {/* Overlay for Sidebar when open */}
-//       {sidebarOpen && (
-//         <div
-//           className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
-//           onClick={toggleSidebar}
-//         ></div>
-//       )}
-//     </div>
-//   );
-// }
-
-
-
-
-// // ======================= Post Side bar ===============
-// export function PostSidebar() {
-//   const storeData = [
-//     {
-//       storeName: "Play Store",
-//       subtitle: "Get it on",
-//       iconSrc: "/svg/play-store.svg",
-//       iconAlt: "Google Play Store icon",
-//     },
-//     {
-//       storeName: "Apple Store",
-//       subtitle: "Available on",
-//       iconSrc: "/svg/apple-store.svg",
-//       iconAlt: "Apple App Store icon",
-//     },
-//   ];
-
-//   return (
-//     <div>
-//       <div className="flex gap-3.5 items-center px-7 py-[20px] w-full text-lg bg-zinc-500 bg-opacity-10 min-h-[44px] rounded-[69px] text-zinc-500">
-//         <Search />
-//         <Input type="email" placeholder={`Search`} className="border-none" />
-//       </div>
-//       <div className="flex gap-2 px-7 py-[20px]">
-//         <Compass />
-//         Explore
-//       </div>
-//       <div className="flex gap-2 px-7 py-[20px]">
-//         <Video /> Live
-//       </div>
-//       <div className="flex gap-2 px-7 py-[20px]">
-//         <CircleHelp />
-//         Help
-//       </div>
-
-//       <div>
-//         <div className="flex flex-col gap-6 items-center mt-12 max-w-full  max-md:mt-10">
-//           {storeData.map((store, index) => (
-//             <StoreButton
-//               key={index}
-//               storeName={store.storeName}
-//               subtitle={store.subtitle}
-//               iconSrc={store.iconSrc}
-//               iconAlt={store.iconAlt}
-//             />
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// // ========================== Post Main ================================
-
-// export function PostMain() {
-//   return (
-//     <div>
-//       <div>Happening right now in USER LOCATION NAME</div>
-//       <div className="flex flex-wrap gap-3">
-//         <div className="basis-[32%] grow bg-red-300 h-[399px] flex">
-//           <Play /> 203
-//         </div>
-//         <div className="basis-[32%] grow bg-red-300 flex">
-//           <Play /> 203
-//         </div>
-//         <div className="basis-[32%] grow bg-red-300 flex">
-//           <Play /> 203
-//         </div>
-//         <div className="basis-[32%] grow bg-red-300 h-[399px] flex">
-//           <Play /> 203
-//         </div>
-//         <div className="basis-[32%] grow bg-red-300 flex h-[399px]">
-//           <Play /> 203
-//         </div>
-//         <div className="basis-[32%] grow bg-red-300 flex">
-//           <Play /> 203
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
 "use client";
-import React, { useState } from "react";
-import StoreButton from "@/components/store-button";
+
+import Image from "next/image";
+import { Search, Compass, Radio, HelpCircle, Menu } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import {
-  CircleHelp,
-  Compass,
-  Play,
-  Search,
-  Video,
-  Menu,
-  X,
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-// Page Component
-const Page: React.FC = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
+export default function page() {
   return (
-    <div className="motion-preset-slide-right container mx-auto my-[64px]">
-      {/* Sidebar Trigger Button */}
-      <button
-        className="md:hidden fixed top-[85px] left-4 z-50 bg-blue-500 text-white p-2 rounded"
-        onClick={toggleSidebar}
-      >
-        {sidebarOpen ? <X /> : <Menu />}
-      </button>
+    <div className="flex bg-black text-white">
+      {/* Desktop Sidebar */}
+      <div className="hidden md:flex w-64 p-4 flex-col border-r border-zinc-800">
+        <SidebarContent />
+      </div>
 
-      <div className="flex gap-3 relative">
-        {/* Sidebar */}
-        <div
-          className={`fixed md:relative inset-y-0 left-0 transform ${
-            sidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } md:translate-x-0 md:flex md:basis-1/3 flex-col h-screen shadow-lg transition-transform duration-300 ease-in-out z-40 md:z-0 md:static`}
-        >
-          <PostSidebar />
+      {/* Main Content */}
+      <div className="flex-1 p-4 ">
+        <div className="mb-4 text-sm text-zinc-400 flex gap-1 items-center">
+          {/* Mobile Sidebar Trigger */}
+          <SidebarTrigger />
+          <p>Happening right now in </p>
+          <span className="text-white">USER LOCATION NAME</span>
         </div>
 
-        {/* Main section */}
-        <div className="flex-1 md:basis-2/3">
-          <PostMain />
-        </div>
-      </div>
-
-      {/* Overlay for Sidebar when open */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black opacity-50 z-30 md:hidden"
-          onClick={toggleSidebar}
-        ></div>
-      )}
-    </div>
-  );
-};
-
-export default Page;
-
-// PostSidebar Component
-const PostSidebar: React.FC = () => {
-  const storeData = [
-    {
-      storeName: "Play Store",
-      subtitle: "Get it on",
-      iconSrc: "/svg/play-store.svg",
-      iconAlt: "Google Play Store icon",
-    },
-    {
-      storeName: "Apple Store",
-      subtitle: "Available on",
-      iconSrc: "/svg/apple-store.svg",
-      iconAlt: "Apple App Store icon",
-    },
-  ];
-
-  return (
-    <div>
-      <div className="flex gap-3.5 items-center px-7 py-[20px] w-full text-lg bg-zinc-500 bg-opacity-10 min-h-[44px] rounded-[69px] text-zinc-500">
-        <Search />
-        <Input type="email" placeholder="Search" className="border-none" />
-      </div>
-      <div className="flex gap-2 px-7 py-[20px]">
-        <Compass />
-        Explore
-      </div>
-      <div className="flex gap-2 px-7 py-[20px]">
-        <Video />
-        Live
-      </div>
-      <div className="flex gap-2 px-7 py-[20px]">
-        <CircleHelp />
-        Help
-      </div>
-
-      <div>
-        <div className="flex flex-col gap-6 items-center mt-12 max-w-full max-md:mt-10">
-          {storeData.map((store, index) => (
-            <StoreButton
-              key={index}
-              storeName={store.storeName}
-              subtitle={store.subtitle}
-              iconSrc={store.iconSrc}
-              iconAlt={store.iconAlt}
-            />
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {[
+            {
+              views: 345,
+              image:
+                "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
+            },
+            {
+              views: 245,
+              image:
+                "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
+            },
+            {
+              views: 345,
+              image:
+                "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
+            },
+            {
+              views: 0,
+              image:
+                "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
+            },
+            {
+              views: 0,
+              image:
+                "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
+            },
+            {
+              views: 0,
+              image:
+                "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="relative aspect-square rounded-lg overflow-hidden"
+            >
+              <Image
+                src={item.image || "/placeholder.svg"}
+                alt={`News item ${i + 1}`}
+                fill
+                className="object-cover"
+              />
+              {item.views > 0 && (
+                <div className="absolute bottom-2 left-2 flex items-center space-x-1 text-white text-sm">
+                  <div className="w-4 h-4 flex items-center justify-center">
+                    <Radio className="w-3 h-3" />
+                  </div>
+                  <span>{item.views}</span>
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </div>
     </div>
   );
-};
+}
 
-// PostMain Component
-const PostMain: React.FC = () => {
+// Extracted sidebar content into a separate component
+function SidebarContent() {
   return (
-    <div>
-      <div>Happening right now in USER LOCATION NAME</div>
-      <div className="flex flex-wrap gap-3">
-        {[...Array(6)].map((_, index) => (
-          <div
-            key={index}
-            className={`basis-[32%] grow bg-red-300 h-[399px] flex`}
-          >
-            <Play /> 203
-          </div>
-        ))}
+    <div className="flex flex-col h-full">
+      <div className="flex-grow space-y-6">
+        {/* Search */}
+        <div className="relative">
+          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Search"
+            className="pl-8 bg-zinc-900 border-none text-white"
+          />
+        </div>
+
+        {/* Navigation */}
+        <nav className="space-y-2">
+          <button className="flex items-center space-x-2 w-full p-2 hover:bg-zinc-900 rounded-lg">
+            <Compass className="h-5 w-5" />
+            <span>Explore</span>
+          </button>
+          <button className="flex items-center space-x-2 w-full p-2 hover:bg-zinc-900 rounded-lg">
+            <Radio className="h-5 w-5" />
+            <span>Live</span>
+          </button>
+          <button className="flex items-center space-x-2 w-full p-2 hover:bg-zinc-900 rounded-lg">
+            <HelpCircle className="h-5 w-5" />
+            <span>Help</span>
+          </button>
+        </nav>
+      </div>
+
+      {/* App Store Buttons */}
+      <div className="mt-auto space-y-2">
+        <Image
+          src="https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg"
+          alt="Get it on Google Play"
+          width={140}
+          height={40}
+          className="rounded"
+        />
+        <Image
+          src="https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg"
+          alt="Download on the App Store"
+          width={140}
+          height={40}
+          className="rounded"
+        />
       </div>
     </div>
   );
-};
+}
+
+
+function SidebarTrigger() {
+  return (
+    <div className="md:hidden z-50">
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button variant="ghost" size="icon" className="text-white">
+            <Menu className="h-5 w-5" />
+          </Button>
+        </SheetTrigger>
+        <SheetContent side="left" className="w-64 p-0 bg-black">
+          <div className="flex flex-col h-full p-4">
+            <SidebarContent />
+          </div>
+        </SheetContent>
+      </Sheet>
+    </div>
+  );
+}
