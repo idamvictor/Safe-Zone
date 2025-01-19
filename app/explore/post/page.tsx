@@ -5,6 +5,7 @@ import { Search, Compass, Radio, HelpCircle, Menu } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import Link from "next/link";
 
 export default function page() {
   return (
@@ -57,7 +58,7 @@ export default function page() {
                 "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
             },
           ].map((item, i) => (
-            <div
+            <Link href='/explore/1'
               key={i}
               className="relative aspect-square rounded-lg overflow-hidden"
             >
@@ -75,7 +76,7 @@ export default function page() {
                   <span>{item.views}</span>
                 </div>
               )}
-            </div>
+            </Link>
           ))}
         </div>
       </div>

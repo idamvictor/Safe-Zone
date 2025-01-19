@@ -11,7 +11,7 @@ return (
   <div className=" container mx-auto flex gap-4">
     {/* i hid the id here */}
     <div className="hidden">{id}</div>
-    <div className="basis-5/6">
+    <div className="w-[100%] md:basis-5/6">
       <VideoPlayer />
     </div>
     <div className="hidden md:flex basis-1/6">
