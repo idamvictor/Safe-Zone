@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
           className="flex gap-4 justify-center items-center py-5 text-[16px] md:text-3xl font-semibold tracking-tight leading-none text-primary fill-current"
         >
           <Image
-            src="/logo.ico"
+            src="/logo.png"
             alt=""
             width={39}
             height={39}
