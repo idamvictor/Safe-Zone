@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col max-w-full w-[248px]">
             <div className="flex gap-4 justify-center items-center self-start py-5 text-[16px] md:text-3xl font-semibold tracking-tight leading-none text-center">
               <Image
-                src="/logo.ico"
+                src="/logo.png"
                 alt="Safe Zone Logo"
                 className="object-contain shrink-0 self-stretch my-auto aspect-[1.63] w-[24px] h-[24px] md:w-[39px] md:h-[39px]"
                 width={39}
