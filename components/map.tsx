@@ -58,7 +58,7 @@ export default function Map({
   }, []);
 
   return (
-    <div className="h-screen container mx-auto">
+    <div className="h-[50vh] md:h-full container mx-auto">
       <MapContainer
         className="h-full"
         center={position}
