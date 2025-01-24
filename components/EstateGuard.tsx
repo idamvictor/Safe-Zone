@@ -29,7 +29,7 @@ export default function EstateGuard() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0F1E]">
+    <div className="min-h-screen">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-1/2 -right-1/2 w-[1000px] h-[1000px] bg-blue-500/10 rounded-full blur-3xl" />
@@ -49,9 +49,9 @@ export default function EstateGuard() {
               <div className="space-y-6">
                 <motion.div
                   {...fadeIn}
-                  className="inline-flex items-center px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20"
+                  className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20"
                 >
-                  <span className="text-blue-400 text-sm font-medium">
+                  <span className="text-primary/70 text-sm font-medium">
                     Estate Security
                   </span>
                 </motion.div>
@@ -60,13 +60,13 @@ export default function EstateGuard() {
                   className="text-5xl md:text-6xl font-bold text-white"
                 >
                   Estate Guard
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary/70 to-primary/100">
                     Access Control
                   </span>
                 </motion.h1>
                 <motion.p
                   {...fadeIn}
-                  className="text-gray-400 text-lg max-w-lg"
+                  className="text-muted-foreground text-lg max-w-lg"
                 >
                   Secure your properties with advanced access control and
                   monitoring systems.
@@ -85,16 +85,16 @@ export default function EstateGuard() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 * index + 0.6 }}
-                    className="flex items-center p-4 rounded-xl bg-gradient-to-r from-blue-900/40 to-blue-800/20 border border-blue-800/50"
+                    className="flex items-center p-4 rounded-xl  from-blue-900/40 to-blue-800/20 border border-blue-800/50"
                   >
                     <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-lg bg-blue-500">
-                      <feature.icon className="w-6 h-6 text-white" />
+                      <feature.icon className="w-6 h-6" />
                     </div>
                     <div className="ml-4">
-                      <h3 className="text-lg font-semibold text-white">
+                      <h3 className="text-lg font-semibold">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-400">{feature.description}</p>
+                      <p className="text-muted-foreground">{feature.description}</p>
                     </div>
                   </motion.div>
                 ))}

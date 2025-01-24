@@ -74,20 +74,20 @@ const phoneVariants = {
 
 export default function Hero() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-950 to-blue-950">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-accent to-primary-foreground">
       {/* Background elements */}
       <div className="absolute inset-0">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}
           transition={{ duration: 2 }}
-          className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-blue-500/30 blur-3xl"
+          className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-primary/30 blur-3xl"
         />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.3 }}
           transition={{ duration: 2, delay: 0.5 }}
-          className="absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-blue-600/30 blur-3xl"
+          className="absolute -bottom-20 -right-20 h-96 w-96 rounded-full bg-primary/30 blur-3xl"
         />
       </div>
 
@@ -107,17 +107,17 @@ export default function Hero() {
 
           <motion.h1
             variants={itemVariants}
-            className="text-4xl font-bold tracking-tight text-white sm:text-6xl"
+            className="text-4xl font-bold tracking-tight sm:text-6xl"
           >
             We have your back{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-primary bg-clip-text text-transparent">
               any time, anywhere
             </span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className="max-w-xl text-lg text-gray-300"
+            className="max-w-xl text-lg text-accent-foreground/80"
           >
             Stay informed and protected with real-time emergency alerts, instant
             communication, and comprehensive safety features right at your
@@ -128,7 +128,7 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative overflow-hidden rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+              className="relative overflow-hidden rounded-lg bg-blue-600 px-6 py-3 font-medium text-primary-foreground transition-colors hover:bg-blue-700"
             >
               Get Started
             </motion.button>

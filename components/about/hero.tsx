@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black">
+    <section className="relative min-h-screen overflow-hidden bg-background">
       {/* Background image with gradient overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -15,7 +15,7 @@ export default function Hero() {
           className="h-full w-full object-cover"
           layout="fill"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-foreground/50 to-background/80" />
       </div>
 
       {/* Content */}
@@ -27,24 +27,24 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
               <span className="block">Safezone</span>
               <span className="mt-2 block text-primary">
                 Where Safety Meets Community
               </span>
             </h1>
-            <p className="mt-6 text-xl text-gray-300">
+            <p className="mt-6 text-xl text-muted-foreground">
               Creating a safe environment for everyone, building stronger
               communities, and fostering meaningful connections.
             </p>
             <div className="mt-10 flex gap-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-background">
                 Get Started
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10"
+                className="border-white hover:bg-white/20 bg-transparent"
               >
                 Learn More
               </Button>
@@ -87,7 +87,7 @@ export default function Hero() {
                   </div>
                   <div className="flex h-16 w-16 items-center justify-center rounded-full bg-secondary">
                     <svg
-                      className="h-8 w-8 text-white"
+                      className="h-8 w-8 "
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

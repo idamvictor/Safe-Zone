@@ -64,7 +64,7 @@ const features = [
 
 export default function BeInTheLoop() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gray-950 py-24">
+    <section className="relative min-h-screen overflow-hidden py-24">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div
@@ -94,7 +94,7 @@ export default function BeInTheLoop() {
             </motion.p>
             <motion.h2
               variants={itemVariants}
-              className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl"
+              className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl"
             >
               Know the real story faster.
             </motion.h2>
@@ -148,10 +148,10 @@ export default function BeInTheLoop() {
                     </motion.div>
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-semibold text-white">
+                    <h3 className="text-xl font-semibold">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-400">{feature.description}</p>
+                    <p className="text-muted-foreground">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}

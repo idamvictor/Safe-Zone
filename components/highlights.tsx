@@ -34,20 +34,20 @@ export default function Highlights() {
   });
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-950 to-blue-950 py-24">
+    <section className="relative min-h-screen overflow-hidden bg-secondary py-24">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.2 }}
           transition={{ duration: 2 }}
-          className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue-500/30 blur-3xl"
+          className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary/30 blur-3xl"
         />
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.2 }}
           transition={{ duration: 2, delay: 0.5 }}
-          className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-blue-600/30 blur-3xl"
+          className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary/30 blur-3xl"
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function Highlights() {
             </motion.p>
             <motion.h2
               variants={itemVariants}
-              className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-5xl lg:text-6xl"
+              className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl"
             >
               Safezone is a force for good in the world.
             </motion.h2>
@@ -106,7 +106,7 @@ export default function Highlights() {
                   </div>
                 </div>
                 {/* Title */}
-                <motion.p className="mt-4 text-sm text-gray-400 transition-colors group-hover:text-blue-400">
+                <motion.p className="mt-4 text-sm text-accent-foreground transition-colors group-hover:text-blue-400">
                   {highlight.title}
                 </motion.p>
               </motion.div>

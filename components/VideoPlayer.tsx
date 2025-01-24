@@ -20,7 +20,7 @@ export default function VideoPlayer() {
   const [showComments, setShowComments] = useState(false);
 
   return (
-    <div className="flex flex-col h-screen bg-black text-white">
+    <div className="flex flex-col h-screen text-white">
       <main className="flex-grow overflow-hidden relative">
         <VideoContent onCommentClick={() => setShowComments(true)} />
         {showComments && (

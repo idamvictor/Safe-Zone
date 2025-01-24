@@ -30,7 +30,7 @@ const itemVariants = {
 
 export default function Impact() {
   return (
-    <section className="bg-gradient-to-b from-blue-900 to-blue-800 py-20 text-white">
+    <section className="bg-gradient-to-b from-secondary to-primary/70 py-20">
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -47,7 +47,7 @@ export default function Impact() {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-blue-200 max-w-2xl mx-auto"
+            className="text-xl text-muted-foreground max-w-2xl mx-auto"
           >
             SafeZone is more than just an app - it&apos;s a movement towards a safer,
             more connected world. See how we&apos;re making a difference.
@@ -70,12 +70,12 @@ export default function Impact() {
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 360 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-600 mb-4"
+                className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary mb-4 text-background"
               >
                 <stat.icon size={32} />
               </motion.div>
               <h3 className="text-3xl font-bold mb-2">{stat.value}</h3>
-              <p className="text-blue-200">{stat.label}</p>
+              <p className="text-muted-foreground">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -95,7 +95,7 @@ export default function Impact() {
           </motion.h3>
           <motion.p
             variants={itemVariants}
-            className="text-blue-200 mb-6 max-w-2xl mx-auto"
+            className="text-muted-foreground mb-6 max-w-2xl mx-auto"
           >
             Be part of a network that&apos;s actively making the world a safer place.
             Download SafeZone today and contribute to a more secure tomorrow.
@@ -104,7 +104,7 @@ export default function Impact() {
             variants={itemVariants}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300"
+            className="bg-primary hover:bg-blue-700 font-bold py-3 px-6 rounded-full transition-colors duration-300 text-background"
           >
             Download SafeZone Now
           </motion.button>

@@ -65,7 +65,7 @@ export default function SuccessStories() {
   };
 
   return (
-    <section className="bg-gradient-to-b from-blue-800 to-blue-900 py-20 text-white">
+    <section className="py-20">
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -82,7 +82,7 @@ export default function SuccessStories() {
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-blue-200 max-w-2xl mx-auto"
+            className="text-xl text-muted-foreground max-w-2xl mx-auto"
           >
             Real people, real impact. Discover how SafeZone is making a
             difference in lives across the world.
@@ -131,14 +131,14 @@ export default function SuccessStories() {
 
           <button
             onClick={prevStory}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors duration-300"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-12 bg-primary p-2 rounded-full hover:bg-primary/50 transition-colors duration-300 text-background"
             aria-label="Previous story"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextStory}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors duration-300"
+            className="absolute  text-background right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-primary p-2 rounded-full hover:bg-primary/50 transition-colors duration-300"
             aria-label="Next story"
           >
             <ChevronRight className="w-6 h-6" />

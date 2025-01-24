@@ -85,7 +85,7 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-gray-950 to-blue-950/30 py-24">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-secondary to-blue-950/30 py-24">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div
@@ -111,7 +111,7 @@ export default function TestimonialSection() {
         >
           <motion.h2
             variants={containerVariants}
-            className="mb-16 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl"
+            className="mb-16 bg-gradient-to-r from-foreground to-gray-400 bg-clip-text text-5xl font-bold tracking-tight text-transparent sm:text-6xl lg:text-7xl"
           >
             Testimonials
           </motion.h2>
@@ -152,14 +152,14 @@ export default function TestimonialSection() {
                 className="absolute inset-0"
               >
                 <blockquote className="flex h-full flex-col items-center justify-center space-y-8">
-                  <p className="text-lg leading-relaxed text-gray-300 sm:text-xl">
+                  <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
                     {testimonials[page].quote}
                   </p>
                   <footer className="mt-8">
                     <div className="flex items-center justify-center space-x-4">
                       <div className="h-px w-12 bg-blue-500/50" />
                       <div>
-                        <p className="text-2xl font-semibold text-blue-400">
+                        <p className="text-2xl font-semibold text-primary/70">
                           {testimonials[page].author}
                         </p>
                         <p className="text-sm text-gray-500">

@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function page() {
   return (
-    <div className="flex bg-black text-white motion-preset-slide-right-md">
+    <div className="flex motion-preset-slide-right-md">
       {/* Desktop Sidebar */}
       <div className="hidden md:flex w-64 p-4 flex-col border-r border-zinc-800">
         <SidebarContent />
@@ -21,7 +21,7 @@ export default function page() {
           {/* Mobile Sidebar Trigger */}
           <SidebarTrigger />
           <p>Happening right now in </p>
-          <span className="text-white">USER LOCATION NAME</span>
+          <span className="text-foreground">USER LOCATION NAME</span>
         </div>
 
         {/* Grid */}
@@ -94,21 +94,21 @@ function SidebarContent() {
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search"
-            className="pl-8 bg-zinc-900 border-none text-white"
+            className="pl-8 bg-secondary border-none"
           />
         </div>
 
         {/* Navigation */}
         <nav className="space-y-2">
-          <button className="flex items-center space-x-2 w-full p-2 hover:bg-zinc-900 rounded-lg">
+          <button className="flex items-center space-x-2 w-full p-2 hover:bg-secondary rounded-lg">
             <Compass className="h-5 w-5" />
             <span>Explore</span>
           </button>
-          <button className="flex items-center space-x-2 w-full p-2 hover:bg-zinc-900 rounded-lg">
+          <button className="flex items-center space-x-2 w-full p-2 hover:bg-secondary rounded-lg">
             <Radio className="h-5 w-5" />
             <span>Live</span>
           </button>
-          <button className="flex items-center space-x-2 w-full p-2 hover:bg-zinc-900 rounded-lg">
+          <button className="flex items-center space-x-2 w-full p-2 hover:bg-secondary rounded-lg">
             <HelpCircle className="h-5 w-5" />
             <span>Help</span>
           </button>
