@@ -51,15 +51,15 @@ export default function IncidentFeed() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-secondary">
       {/* Search Bar */}
-      <div className="sticky top-0 p-4 bg-black/90 backdrop-blur-sm z-10">
+      <div className="sticky top-0 p-4 bg-secondary backdrop-blur-sm z-10">
         <div className="relative">
           <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
           <input
             type="search"
             placeholder="Search"
-            className="w-full bg-gray-900 rounded-full pl-10 pr-4 py-2 text-sm text-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-700"
+            className="w-full bg-background rounded-full pl-10 pr-4 py-2 text-sm text-gray-200 placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-700"
           />
         </div>
       </div>

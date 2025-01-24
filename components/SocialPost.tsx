@@ -14,7 +14,7 @@ import Image from "next/image";
 
 export default function SocialPost() {
   return (
-    <div className="flex flex-col min-h-screen bg-black text-white">
+    <div className="flex flex-col min-h-scree">
       {/* Profile Section */}
       <div className="flex items-center gap-3 p-4">
         <Avatar className="h-10 w-10">

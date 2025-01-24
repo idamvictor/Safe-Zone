@@ -39,12 +39,12 @@ export default function GreaterGood() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-900" ref={targetRef}>
+    <div className="min-h-screen bg-secondary" ref={targetRef}>
       <div className="relative">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute w-[500px] h-[500px] bg-blue-500/30 rounded-full blur-3xl -top-20 -left-20" />
-          <div className="absolute w-[500px] h-[500px] bg-blue-700/20 rounded-full blur-3xl bottom-0 right-0" />
+          <div className="absolute w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl -top-20 -left-20" />
+          <div className="absolute w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl bottom-0 right-0" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
@@ -55,7 +55,7 @@ export default function GreaterGood() {
             className="text-center mb-20"
           >
             <motion.h1
-              className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-100 mb-6"
+              className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/40 mb-6"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
@@ -63,7 +63,7 @@ export default function GreaterGood() {
               For the greater good.
             </motion.h1>
             <motion.p
-              className="text-blue-100 max-w-2xl mx-auto text-lg"
+              className="text-muted-foreground max-w-2xl mx-auto text-lg"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -86,21 +86,21 @@ export default function GreaterGood() {
                 whileHover={{ y: -5 }}
                 className="relative group"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-blue-600/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                <div className="relative bg-slate-800/50 backdrop-blur-sm border border-blue-500/10 rounded-2xl p-6 h-full">
+                <div className="absolute inset-0 bg-gradient-to-r from-background to-primary/5 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300" />
+                <div className="relative bg-muted backdrop-blur-sm border border-primary/10 rounded-2xl p-6 h-full">
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                     className={`w-14 h-14 rounded-xl bg-gradient-to-r ${feature.color} flex items-center justify-center mb-4`}
                   >
-                    <feature.icon className="w-7 h-7 text-white" />
+                    <feature.icon className="w-7 h-7" />
                   </motion.div>
-                  <h3 className="text-xl font-semibold text-white mb-3">
+                  <h3 className="text-xl font-semibold mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-300">{feature.description}</p>
+                  <p className="text-muted-foreground">{feature.description}</p>
                   <motion.div
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-primary/30 rounded-full"
                     initial={{ scaleX: 0 }}
                     whileHover={{ scaleX: 1 }}
                     transition={{ duration: 0.3 }}

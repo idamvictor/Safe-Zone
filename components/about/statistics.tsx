@@ -1,12 +1,12 @@
 export default function Statistics() {
   return (
-    <section className="relative overflow-hidden bg-black px-6 py-24">
+    <section className="relative overflow-hidden px-6 py-24">
       {/* Background Effects */}
       <div className="absolute inset-0 z-0">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse">
-          <div className="h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
+          <div className="h-96 w-96 rounded-full bg-primary/100 blur-3xl" />
         </div>
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-3xl" />
+        <div className="absolute inset-0 bg-background/80 backdrop-blur-3xl" />
       </div>
 
       {/* Grid Pattern */}
@@ -36,17 +36,17 @@ export default function Statistics() {
               </div>
 
               {/* Content */}
-              <div className="relative space-y-4 rounded-2xl border border-white/10 bg-black/50 p-8 backdrop-blur-sm transition-transform duration-500 group-hover:scale-105">
+              <div className="relative space-y-4 rounded-2xl border border-muted bg-background/50 p-8 backdrop-blur-sm transition-transform duration-500 group-hover:scale-105">
                 <div className="text-center">
                   <div className="relative">
-                    <span className="text-5xl font-bold text-white">
+                    <span className="text-5xl font-bold">
                       {stat.number}
                     </span>
-                    <span className="ml-1 text-2xl font-medium text-blue-400">
+                    <span className="ml-1 text-2xl font-medium text-primary">
                       {stat.suffix}
                     </span>
                   </div>
-                  <div className="mt-2 text-sm font-medium tracking-wider text-gray-400">
+                  <div className="mt-2 text-sm font-medium tracking-wider text-muted-foreground">
                     {stat.label}
                   </div>
                 </div>

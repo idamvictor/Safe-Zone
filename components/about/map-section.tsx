@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function MapSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black">
+    <section className="relative min-h-screen overflow-hidden bg-background">
       {/* Background map image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -15,7 +15,7 @@ export default function MapSection() {
           className="h-full w-full object-cover opacity-20"
           layout="fill"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-backround/30 via-transparent to-backgeound/30" />
       </div>
 
       {/* Content */}
@@ -27,14 +27,14 @@ export default function MapSection() {
           className="text-center"
         >
           <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            <span className="block bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
               Build the future of public
             </span>
-            <span className="mt-2 block bg-gradient-to-r from-purple-600 to-blue-400 bg-clip-text text-transparent">
+            <span className="mt-2 block bg-gradient-to-r from-purple-600 to-primary bg-clip-text text-transparent">
               safety together.
             </span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-300">
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
             Join our network of safety professionals and community leaders
             working together to create safer spaces for everyone.
           </p>
@@ -49,7 +49,7 @@ export default function MapSection() {
             transition={{ duration: 0.5 }}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           >
-            <div className="animate-pulse rounded-full bg-blue-500 p-4">
+            <div className="animate-pulse rounded-full bgprimary p-4">
               <div className="h-8 w-8 rounded-full bg-blue-600" />
             </div>
           </motion.div>
