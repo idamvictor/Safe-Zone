@@ -8,9 +8,13 @@ import {
   Network,
   AlertTriangle,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 export default function Features() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -48,7 +52,7 @@ export default function Features() {
   };
 
   return (
-    <section className="relative overflow-hidden py-24">
+    <section ref={ref} className="relative overflow-hidden py-24">
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
 
@@ -57,7 +61,7 @@ export default function Features() {
         <motion.div
           className="mb-20 text-center"
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
           variants={headerVariants}
         >
           <motion.h2
@@ -80,7 +84,7 @@ export default function Features() {
           className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
         >
           {[
             {
@@ -136,9 +140,7 @@ export default function Features() {
               >
                 <feature.icon className="h-6 w-6" />
               </motion.div>
-              <h3 className="mb-2 text-xl font-semibold">
-                {feature.title}
-              </h3>
+              <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
               <p className="text-muted-foreground">{feature.description}</p>
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
             </motion.div>

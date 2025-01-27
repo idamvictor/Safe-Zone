@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const successStories = [
   {
@@ -11,24 +11,21 @@ const successStories = [
     location: "New York, NY",
     story:
       "SafeZone's quick response saved my grandmother during a medical emergency. The app alerted nearby medical professionals who arrived within minutes.",
-    image:
-      "",
+    image: "",
   },
   {
     name: "Michael Lee",
     location: "Los Angeles, CA",
     story:
       "When I witnessed a car accident, SafeZone guided me through providing first aid and alerted emergency services. It made me feel empowered to help.",
-    image:
-      "",
+    image: "",
   },
   {
     name: "Sophia Rodriguez",
     location: "Miami, FL",
     story:
       "During a hurricane, SafeZone kept our community connected and informed. We coordinated evacuations and support efforts through the app.",
-    image:
-      "",
+    image: "",
   },
 ];
 
@@ -52,6 +49,9 @@ const itemVariants = {
 };
 
 export default function SuccessStories() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const [currentStory, setCurrentStory] = useState(0);
 
   const nextStory = () => {
@@ -65,13 +65,12 @@ export default function SuccessStories() {
   };
 
   return (
-    <section className="py-20">
+    <section ref={ref} className="py-20">
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={isInView ? "visible" : "hidden"}
           className="text-center mb-12"
         >
           <motion.h2
@@ -92,14 +91,13 @@ export default function SuccessStories() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={isInView ? "visible" : "hidden"}
           className="relative max-w-3xl mx-auto"
         >
           <motion.div
             key={currentStory}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             className="bg-white/10 backdrop-blur-sm rounded-lg p-8 text-center"
@@ -107,7 +105,8 @@ export default function SuccessStories() {
             <Image
               src={successStories[currentStory].image || "/placeholder.svg"}
               alt={successStories[currentStory].name}
-              layout="fill"
+              width={96}
+              height={96}
               className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
             />
             <h3 className="text-2xl font-semibold mb-2">
@@ -138,14 +137,19 @@ export default function SuccessStories() {
           </button>
           <button
             onClick={nextStory}
-            className="absolute  text-background right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-primary p-2 rounded-full hover:bg-primary/50 transition-colors duration-300"
+            className="absolute text-background right-0 top-1/2 transform -translate-y-1/2 translate-x-12 bg-primary p-2 rounded-full hover:bg-primary/50 transition-colors duration-300"
             aria-label="Next story"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="mt-12 text-center">
+        <motion.div
+          variants={itemVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="mt-12 text-center"
+        >
           <a
             href="#download"
             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-colors duration-300"

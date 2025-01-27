@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Play } from "lucide-react";
+import { useRef } from "react"; // Required for refs with `useInView`
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -33,19 +34,28 @@ export default function Highlights() {
       "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737324635/breaking-news-with-world-map-background-vector_orskep.jpg",
   });
 
+  // Ref for the entire section to detect when it enters the viewport
+  const sectionRef = useRef(null);
+
+  // Hook to track whether the section is in view
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-secondary py-24">
+    <section
+      ref={sectionRef} // Attach ref here
+      className="relative min-h-screen overflow-hidden bg-secondary py-24"
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
+          animate={isInView ? { opacity: 0.2 } : {}} // Animate only when in view
           transition={{ duration: 2 }}
           className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-primary/30 blur-3xl"
         />
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
+          animate={isInView ? { opacity: 0.2 } : {}} // Animate only when in view
           transition={{ duration: 2, delay: 0.5 }}
           className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-primary/30 blur-3xl"
         />
@@ -56,7 +66,7 @@ export default function Highlights() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"} // Trigger container animations when in view
           className="space-y-16 text-center"
         >
           <div className="space-y-4">
@@ -117,4 +127,3 @@ export default function Highlights() {
     </section>
   );
 }
-

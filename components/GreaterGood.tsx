@@ -1,11 +1,13 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Hospital, Shield, LineChart } from "lucide-react";
 import { useRef } from "react";
 
 export default function GreaterGood() {
   const targetRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(targetRef, { once: true, margin: "-100px" });
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start end", "end start"],
@@ -50,14 +52,14 @@ export default function GreaterGood() {
         <div className="relative max-w-7xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8 }}
             className="text-center mb-20"
           >
             <motion.h1
               className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/40 mb-6"
               initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
+              animate={isInView ? { scale: 1 } : { scale: 0.9 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               For the greater good.
@@ -65,7 +67,7 @@ export default function GreaterGood() {
             <motion.p
               className="text-muted-foreground max-w-2xl mx-auto text-lg"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={isInView ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               Amet minim mollit non deserunt ullamco est sit aliqua dolor do
@@ -81,7 +83,9 @@ export default function GreaterGood() {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+                }
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 whileHover={{ y: -5 }}
                 className="relative group"
