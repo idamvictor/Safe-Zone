@@ -1,12 +1,19 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useRef } from "react";
 
 export default function MapSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-background">
+    <section
+      ref={ref}
+      className="relative min-h-screen overflow-hidden bg-background"
+    >
       {/* Background map image with overlay */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -22,7 +29,7 @@ export default function MapSection() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
           className="text-center"
         >
@@ -45,7 +52,7 @@ export default function MapSection() {
           {/* Center Node */}
           <motion.div
             initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
+            animate={isInView ? { scale: 1 } : { scale: 0 }}
             transition={{ duration: 0.5 }}
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
           >
@@ -67,7 +74,9 @@ export default function MapSection() {
               className="absolute"
               style={position}
               initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
+              animate={
+                isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
+              }
               transition={{ delay: index * 0.2, duration: 0.5 }}
             >
               <div className="group relative">
@@ -90,7 +99,7 @@ export default function MapSection() {
         {/* CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ delay: 1, duration: 0.5 }}
           className="mt-12 text-center"
         >
