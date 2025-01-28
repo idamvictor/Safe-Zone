@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
@@ -57,6 +57,9 @@ const slideVariants = {
 };
 
 export default function TestimonialSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   const [[page, direction], setPage] = useState([0, 0]);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
@@ -70,14 +73,14 @@ export default function TestimonialSection() {
   );
 
   useEffect(() => {
-    if (isAutoPlaying) {
+    if (isAutoPlaying && isInView) {
       const timer = setTimeout(() => {
         paginate(1);
       }, 5000); // Change testimonial every 5 seconds
 
       return () => clearTimeout(timer);
     }
-  }, [page, isAutoPlaying, paginate]);
+  }, [page, isAutoPlaying, paginate, isInView]);
 
   const handleManualNavigation = (newDirection: number) => {
     setIsAutoPlaying(false);
@@ -85,18 +88,21 @@ export default function TestimonialSection() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-secondary to-blue-950/30 py-24">
+    <section
+      ref={ref}
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-secondary to-blue-950/30 py-24"
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
+          animate={isInView ? { opacity: 0.1 } : { opacity: 0 }}
           transition={{ duration: 2 }}
           className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue-500/30 blur-3xl"
         />
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
+          animate={isInView ? { opacity: 0.1 } : { opacity: 0 }}
           transition={{ duration: 2, delay: 0.5 }}
           className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-blue-600/30 blur-3xl"
         />
@@ -106,7 +112,7 @@ export default function TestimonialSection() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
           className="relative mx-auto max-w-4xl text-center"
         >
           <motion.h2
@@ -120,7 +126,7 @@ export default function TestimonialSection() {
             {/* Large quote marks */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 1, delay: 0.5 }}
               className="absolute -left-20 -top-20 text-blue-500/20"
             >
@@ -129,7 +135,7 @@ export default function TestimonialSection() {
 
             <motion.div
               initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ duration: 1, delay: 0.5 }}
               className="absolute -bottom-20 -right-20 text-blue-500/20"
             >
@@ -143,7 +149,7 @@ export default function TestimonialSection() {
                 custom={direction}
                 variants={slideVariants}
                 initial="enter"
-                animate="center"
+                animate={isInView ? "center" : "enter"}
                 exit="exit"
                 transition={{
                   x: { type: "spring", stiffness: 300, damping: 30 },
@@ -216,4 +222,3 @@ export default function TestimonialSection() {
     </section>
   );
 }
-

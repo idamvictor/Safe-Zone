@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { Camera, Clock, Users } from "lucide-react";
+import { useRef } from "react";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -63,19 +64,22 @@ const features = [
 ];
 
 export default function BeInTheLoop() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="relative min-h-screen overflow-hidden py-24">
+    <section ref={ref} className="relative min-h-screen overflow-hidden py-24">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
+          animate={isInView ? { opacity: 0.2 } : { opacity: 0 }}
           transition={{ duration: 2 }}
           className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-blue-500/30 blur-3xl"
         />
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
+          animate={isInView ? { opacity: 0.2 } : { opacity: 0 }}
           transition={{ duration: 2, delay: 0.5 }}
           className="absolute bottom-1/4 right-1/4 h-96 w-96 rounded-full bg-blue-600/30 blur-3xl"
         />
@@ -85,7 +89,7 @@ export default function BeInTheLoop() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          animate={isInView ? "visible" : "hidden"}
           className="space-y-16"
         >
           <div className="text-center">
@@ -106,13 +110,17 @@ export default function BeInTheLoop() {
               className="relative mx-auto w-full max-w-[366px]"
             >
               <motion.div
-                animate={{
-                  boxShadow: [
-                    "0 0 0 0 rgba(59, 130, 246, 0)",
-                    "0 0 0 20px rgba(59, 130, 246, 0.1)",
-                    "0 0 0 0 rgba(59, 130, 246, 0)",
-                  ],
-                }}
+                animate={
+                  isInView
+                    ? {
+                        boxShadow: [
+                          "0 0 0 0 rgba(59, 130, 246, 0)",
+                          "0 0 0 20px rgba(59, 130, 246, 0.1)",
+                          "0 0 0 0 rgba(59, 130, 246, 0)",
+                        ],
+                      }
+                    : {}
+                }
                 transition={{
                   duration: 2,
                   repeat: Number.POSITIVE_INFINITY,
@@ -148,10 +156,10 @@ export default function BeInTheLoop() {
                     </motion.div>
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-semibold">
-                      {feature.title}
-                    </h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
+                    <h3 className="text-xl font-semibold">{feature.title}</h3>
+                    <p className="text-muted-foreground">
+                      {feature.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -162,4 +170,3 @@ export default function BeInTheLoop() {
     </section>
   );
 }
-

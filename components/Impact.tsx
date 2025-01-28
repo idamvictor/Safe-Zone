@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Users, Heart, Shield } from "lucide-react";
+import { useRef } from "react";
 
 const stats = [
   { icon: Users, value: "500K+", label: "Active Users" },
@@ -29,14 +30,19 @@ const itemVariants = {
 };
 
 export default function Impact() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="bg-gradient-to-b from-secondary to-primary/70 py-20">
+    <section
+      ref={ref}
+      className="bg-gradient-to-b from-secondary to-primary/70 py-20"
+    >
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={isInView ? "visible" : "hidden"}
           className="text-center mb-12"
         >
           <motion.h2
@@ -49,16 +55,15 @@ export default function Impact() {
             variants={itemVariants}
             className="text-xl text-muted-foreground max-w-2xl mx-auto"
           >
-            SafeZone is more than just an app - it&apos;s a movement towards a safer,
-            more connected world. See how we&apos;re making a difference.
+            SafeZone is more than just an app - it&apos;s a movement towards a
+            safer, more connected world. See how we&apos;re making a difference.
           </motion.p>
         </motion.div>
 
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={isInView ? "visible" : "hidden"}
           className="grid md:grid-cols-3 gap-8"
         >
           {stats.map((stat, index) => (
@@ -83,8 +88,7 @@ export default function Impact() {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          animate={isInView ? "visible" : "hidden"}
           className="mt-16 text-center"
         >
           <motion.h3
@@ -97,8 +101,9 @@ export default function Impact() {
             variants={itemVariants}
             className="text-muted-foreground mb-6 max-w-2xl mx-auto"
           >
-            Be part of a network that&apos;s actively making the world a safer place.
-            Download SafeZone today and contribute to a more secure tomorrow.
+            Be part of a network that&apos;s actively making the world a safer
+            place. Download SafeZone today and contribute to a more secure
+            tomorrow.
           </motion.p>
           <motion.button
             variants={itemVariants}

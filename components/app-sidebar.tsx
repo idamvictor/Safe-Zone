@@ -35,7 +35,7 @@ export function AppSidebar() {
         <div className="flex overflow-hidden justify-between items-center px-0 py-2.5 w-full text-lg font-semibold leading-none">
           <div className="flex gap-2.5 justify-center items-center py-3">
             <Image
-              src="/logo.ico"
+              src="/logo.png"
               width={24}
               height={24}
               alt=""
