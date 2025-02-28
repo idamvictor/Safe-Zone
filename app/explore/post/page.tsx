@@ -15,6 +15,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { StoreButtons } from "@/components/store-buttons";
 
 // Sample data to mimic YouTube content
 const contentItems = [
@@ -237,22 +238,8 @@ function SidebarContent() {
       </div>
 
       {/* App Store Buttons */}
-      <div className="mt-auto space-y-2">
-        <Image
-          src="https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg"
-          alt="Get it on Google Play"
-          width={140}
-          height={40}
-          className="rounded"
-        />
-        <Image
-          src="https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg"
-          alt="Download on the App Store"
-          width={140}
-          height={40}
-          className="rounded"
-        />
-      </div>
+      {/* Replace the old Image components with the new StoreButtons */}
+      <StoreButtons />
     </div>
   );
 }
