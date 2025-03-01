@@ -17,6 +17,14 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "https://safezone-backend-5ye3.onrender.com/api/v1/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
