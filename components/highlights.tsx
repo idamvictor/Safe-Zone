@@ -1,6 +1,8 @@
 "use client";
 
-import { useGetHighlights } from "@/services/getHighlights";
+import { getFirstImage } from "@/lib/getFirstImage";
+import { Post } from "@/lib/types";
+import { useGetPosts } from "@/services/getPosts";
 import { motion, useInView } from "framer-motion";
 import { Play } from "lucide-react";
 import { useRef } from "react"; // Required for refs with `useInView`
@@ -28,22 +30,8 @@ const itemVariants = {
   },
 };
 
-interface File {
-  file: string;
-}
-
-interface Highlight {
-  id: string;
-  title: string;
-  files: File[];
-}
-
-const getBackgroundImage = (files: File[]): string => {
-  return files.length > 0 ? files[0].file : "";
-};
-
 export default function Highlights() {
-  const { data: highlights, isFetching, error } = useGetHighlights();
+  const { data: highlights, isFetching, error } = useGetPosts();
   console.log(isFetching, error);
 
   const sectionRef = useRef(null);
@@ -93,8 +81,8 @@ export default function Highlights() {
             className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5"
           >
             {Array.isArray(highlights) &&
-              highlights.slice(0, 5).map((highlight: Highlight) => {
-                const bgImage = getBackgroundImage(highlight.files);
+              highlights.slice(0, 5).map((highlight: Post) => {
+                const bgImage = getFirstImage(highlight.files);
 
                 return (
                   <motion.div

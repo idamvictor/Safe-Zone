@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/dyp8gtllq/**",
       },
+      {
+        protocol: "https",
+        hostname: "virtual-offline-test.s3.amazonaws.com",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
   async rewrites() {
@@ -28,3 +34,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// virtual - offline - test.s3.amazonaws.com;

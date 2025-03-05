@@ -33,4 +33,5 @@ export interface Post {
   severity: string;
   user_liked: boolean;
   user_bookmarked: boolean;
+  isLive: boolean;
 }
