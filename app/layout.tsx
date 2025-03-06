@@ -8,6 +8,8 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { GeolocationProvider } from "@/context/GeolocationContext";
 import ObserverProvider from "@/context/ObserverProvider";
+import QueryProvider from "@/context/QueryProvider";
+import { NuqsAdapter } from "nuqs/adapters/next";
 
 const roboto = Roboto({
   weight: "400",
@@ -39,8 +41,9 @@ export default function RootLayout({
               <SidebarProvider className="flex flex-col">
                 <Header />
                 <AppSidebar />
-
-                {children}
+                <QueryProvider>
+                  <NuqsAdapter>{children}</NuqsAdapter>
+                </QueryProvider>
               </SidebarProvider>
             </GeolocationProvider>
             <Footer />
