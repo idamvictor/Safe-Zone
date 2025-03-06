@@ -7,111 +7,38 @@ import {
   Radio,
   HelpCircle,
   Menu,
-  CheckCircle,
+  // CheckCircle,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
+// import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { StoreButtons } from "@/components/store-buttons";
+import { getFirstImage } from "@/lib/getFirstImage";
+import { timeFormat } from "@/lib/timeFormat";
+import { Post } from "@/lib/types";
+import PaginationDemo from "@/components/pagination-demo";
+// import { useState } from "react";
+import { usePostsDataPagination } from "@/services/postDataPagination";
+import { parseAsInteger, useQueryState } from "nuqs";
 
-// Sample data to mimic YouTube content
-const contentItems = [
-  {
-    id: 1,
-    title: "LIVE: Breaking News Coverage - Latest Updates",
-    channelName: "News Network",
-    channelAvatar: "/placeholder.svg?height=40&width=40",
-    channelInitials: "NN",
-    channelVerified: true,
-    views: "11K",
-    isLive: true,
-    watching: "11K watching",
-    image:
-      "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
-    duration: null,
-    timePosted: null,
-  },
-  {
-    id: 2,
-    title: "How to Build a Modern Web Application with Next.js",
-    channelName: "Tech Tutorials",
-    channelAvatar: "/placeholder.svg?height=40&width=40",
-    channelInitials: "TT",
-    channelVerified: true,
-    views: "145K",
-    isLive: false,
-    watching: null,
-    image:
-      "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
-    duration: "18:42",
-    timePosted: "3 days ago",
-  },
-  {
-    id: 3,
-    title: "The Future of AI in 2025 - What to Expect",
-    channelName: "AI Insights",
-    channelAvatar: "/placeholder.svg?height=40&width=40",
-    channelInitials: "AI",
-    channelVerified: false,
-    views: "78K",
-    isLive: false,
-    watching: null,
-    image:
-      "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
-    duration: "24:15",
-    timePosted: "1 week ago",
-  },
-  {
-    id: 4,
-    title: "LIVE: Tech Conference 2025 - Keynote Address",
-    channelName: "Tech Events",
-    channelAvatar: "/placeholder.svg?height=40&width=40",
-    channelInitials: "TE",
-    channelVerified: true,
-    views: "5.2K",
-    isLive: true,
-    watching: "5.2K watching",
-    image:
-      "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
-    duration: null,
-    timePosted: null,
-  },
-  {
-    id: 5,
-    title: "10 Hidden Features in the Latest Software Update",
-    channelName: "Tech Tips",
-    channelAvatar: "/placeholder.svg?height=40&width=40",
-    channelInitials: "TT",
-    channelVerified: false,
-    views: "32K",
-    isLive: false,
-    watching: null,
-    image:
-      "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
-    duration: "12:08",
-    timePosted: "2 days ago",
-  },
-  {
-    id: 6,
-    title: "Exploring the New Design Trends for 2025",
-    channelName: "Design Masters",
-    channelAvatar: "/placeholder.svg?height=40&width=40",
-    channelInitials: "DM",
-    channelVerified: true,
-    views: "64K",
-    isLive: false,
-    watching: null,
-    image:
-      "https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg",
-    duration: "15:30",
-    timePosted: "5 days ago",
-  },
-];
+const PAGE_SIZE = 50;
 
 export default function Page() {
+  // const [page, setPages] = useState(1);
+
+  const [page, setPages] = useQueryState("page", parseAsInteger.withDefault(1));
+
+  const { data: feeds, isFetching, error } = usePostsDataPagination(page);
+
+  const noOfPages = Array.isArray(feeds)
+    ? Math.ceil(feeds.length / PAGE_SIZE)
+    : 1;
+
+  if (error) return <p>Something went wrong</p>;
+
   return (
     <div className="flex motion-preset-slide-right-md">
       {/* Desktop Sidebar */}
@@ -130,23 +57,30 @@ export default function Page() {
 
         {/* YouTube-style Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
-          {contentItems.map((item) => (
-            <Link
-              href={`/explore/${item.id}`}
-              key={item.id}
-              className="group flex flex-col"
-            >
-              {/* Thumbnail Container */}
-              <div className="relative aspect-video w-full rounded-lg overflow-hidden mb-2">
-                <Image
-                  src={item.image || "/placeholder.svg"}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform group-hover:scale-105"
-                />
+          {isFetching ? (
+            <p>Loading</p>
+          ) : Array.isArray(feeds) ? (
+            feeds?.map((item: Post) => {
+              const image = getFirstImage(item.files);
+              const timePosted = timeFormat(item.created_at);
 
-                {/* Duration or Live Badge */}
-                {item.isLive ? (
+              return (
+                <Link
+                  href={`/explore/${item.id}`}
+                  key={item.id}
+                  className="group flex flex-col"
+                >
+                  {/* Thumbnail Container */}
+                  <div className="relative aspect-video w-full rounded-lg overflow-hidden mb-2">
+                    <Image
+                      src={image || "/placeholder.svg"}
+                      alt={item.title || "Post page"}
+                      fill
+                      className="object-cover transition-transform group-hover:scale-105"
+                    />
+
+                    {/* Duration or Live Badge */}
+                    {/* {item.isLive ? (
                   <Badge
                     variant="destructive"
                     className="absolute bottom-2 left-2 flex items-center gap-1"
@@ -158,35 +92,37 @@ export default function Page() {
                   <div className="absolute bottom-2 right-2 bg-black/80 text-white text-xs font-medium px-1.5 py-0.5 rounded">
                     {item.duration}
                   </div>
-                )}
-              </div>
-
-              {/* Content Details */}
-              <div className="flex gap-3">
-                {/* Channel Avatar */}
-                <Avatar className="w-9 h-9 hidden sm:flex">
-                  <AvatarImage
-                    src={item.channelAvatar}
-                    alt={item.channelName}
-                  />
-                  <AvatarFallback>{item.channelInitials}</AvatarFallback>
-                </Avatar>
-
-                {/* Content Info */}
-                <div className="flex-1">
-                  <h3 className="font-medium text-sm line-clamp-2 mb-1 group-hover:text-zinc-300">
-                    {item.title}
-                  </h3>
-
-                  <div className="flex items-center text-xs text-zinc-400">
-                    <span>{item.channelName}</span>
-                    {item.channelVerified && (
-                      <CheckCircle className="w-3 h-3 ml-1 text-zinc-400 fill-zinc-400" />
-                    )}
+                )} */}
                   </div>
 
-                  <div className="flex items-center text-xs text-zinc-400 mt-0.5">
-                    {item.isLive ? (
+                  {/* Content Details */}
+                  <div className="flex gap-3">
+                    {/* Channel Avatar */}
+                    <Avatar className="w-9 h-9 hidden sm:flex">
+                      <AvatarImage
+                        src={item.user.image || "/placeholder.svg"}
+                        alt={" Channel Avatar"}
+                      />
+                      <AvatarFallback>
+                        {item.user.username.slice(0, 2).toUpperCase()}
+                      </AvatarFallback>
+                    </Avatar>
+
+                    {/* Content Info */}
+                    <div className="flex-1">
+                      <h3 className="font-medium text-sm line-clamp-2 mb-1 group-hover:text-zinc-300">
+                        {item.title || "Post tittle"}
+                      </h3>
+
+                      <div className="flex items-center text-xs text-zinc-400">
+                        <span>{item.user.username}</span>
+                        {/* {item.channelVerified && (
+                      <CheckCircle className="w-3 h-3 ml-1 text-zinc-400 fill-zinc-400" />
+                    )} */}
+                      </div>
+
+                      <div className="flex items-center text-xs text-zinc-400 mt-0.5">
+                        {/* {item.isLive ? (
                       <span className="text-red-500">{item.watching}</span>
                     ) : (
                       <>
@@ -194,12 +130,24 @@ export default function Page() {
                         <span className="mx-1">•</span>
                         <span>{item.timePosted}</span>
                       </>
-                    )}
+                    )} */}
+                        <span>{timePosted}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Link>
-          ))}
+                </Link>
+              );
+            })
+          ) : (
+            <p>No Post</p>
+          )}
+        </div>
+        <div className="mt-8">
+          <PaginationDemo
+            page={page}
+            setPages={setPages}
+            noOfPages={noOfPages}
+          />
         </div>
       </div>
     </div>
