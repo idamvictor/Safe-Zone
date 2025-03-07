@@ -5,6 +5,7 @@ import { Post } from "@/lib/types";
 import { useGetPosts } from "@/services/getPosts";
 import { motion, useInView } from "framer-motion";
 import { Play } from "lucide-react";
+import Link from "next/link";
 import { useRef } from "react"; // Required for refs with `useInView`
 
 const containerVariants = {
@@ -92,26 +93,28 @@ export default function Highlights() {
                     whileTap={{ scale: 0.95 }}
                     className="group relative"
                   >
-                    <div className="aspect-square overflow-hidden rounded-full">
-                      <div className="relative h-full w-full">
-                        <div
-                          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"
-                          style={{
-                            backgroundImage: `url(${bgImage})`,
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <motion.div
-                            initial={{ opacity: 0.5, scale: 0.8 }}
-                            whileHover={{ opacity: 1, scale: 1 }}
-                            className="rounded-full bg-blue-500/80 p-4 backdrop-blur-sm transition-colors group-hover:bg-blue-600"
-                          >
-                            <Play className="h-6 w-6 text-white" />
-                          </motion.div>
+                    <Link href={`/explore/${highlight.id}`} className="block">
+                      <div className="aspect-square overflow-hidden rounded-full">
+                        <div className="relative h-full w-full">
+                          <div
+                            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-110"
+                            style={{
+                              backgroundImage: `url(${bgImage})`,
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <motion.div
+                              initial={{ opacity: 0.5, scale: 0.8 }}
+                              whileHover={{ opacity: 1, scale: 1 }}
+                              className="rounded-full bg-blue-500/80 p-4 backdrop-blur-sm transition-colors group-hover:bg-blue-600"
+                            >
+                              <Play className="h-6 w-6 text-white" />
+                            </motion.div>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                     <motion.p className="mt-4 text-sm text-accent-foreground transition-colors group-hover:text-blue-400">
                       {highlight.title}
                     </motion.p>

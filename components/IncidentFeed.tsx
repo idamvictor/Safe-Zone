@@ -72,7 +72,7 @@ export default function IncidentFeed() {
               const timeString = timeFormat(feed.created_at);
 
               return (
-                <Link href="/explore/1" key={feed.id} className="flex gap-3">
+                <Link href={`/explore/${feed.id}`} key={feed.id} className="flex gap-3">
                   <div className="relative w-24 h-16 flex-shrink-0">
                     <Image
                       src={bgImage.toString() || staticImage}
