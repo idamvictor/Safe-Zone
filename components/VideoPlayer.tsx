@@ -6,7 +6,6 @@ import {
   Heart,
   MessageCircle,
   Share2,
-  Music2,
   ChevronDown,
   ChevronUp,
   X,
@@ -15,14 +14,28 @@ import {
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useGetPost } from "@/services/getPost";
 
-export default function VideoPlayer() {
+type videoPlayerProps = {
+  postId: string;
+};
+
+export default function VideoPlayer({ postId }: videoPlayerProps) {
   const [showComments, setShowComments] = useState(false);
+
+  const { data: postDetails, isFetching, error } = useGetPost(postId);
+  console.log(postDetails, isFetching, error);
 
   return (
     <div className="flex flex-col h-screen text-white">
       <main className="flex-grow overflow-hidden relative">
-        <VideoContent onCommentClick={() => setShowComments(true)} />
+        <VideoContent
+          onCommentClick={() => setShowComments(true)}
+          postImg={
+            postDetails?.user.image ||
+            "https://res.cloudinary.com/dyp8gtllq/image/upload/v1741567808/XKpIJApesGkiUv5uDoybpeq3-EAh53KYGRvxheJes7F0x0Qn_Bfqm7RI9jKoexo7UE8_w240-h480-rw_vnarhl.webp"
+          }
+        />
         {showComments && (
           <CommentSection onClose={() => setShowComments(false)} />
         )}
@@ -31,8 +44,13 @@ export default function VideoPlayer() {
   );
 }
 
-
-function VideoContent({ onCommentClick }: { onCommentClick: () => void }) {
+function VideoContent({
+  onCommentClick,
+  postImg,
+}: {
+  onCommentClick: () => void;
+  postImg: string;
+}) {
   return (
     <>
       <div className="relative h-full flex justify-center items-center">
@@ -45,7 +63,9 @@ function VideoContent({ onCommentClick }: { onCommentClick: () => void }) {
       /> */}
 
         <Image
-          src="https://res.cloudinary.com/dyp8gtllq/image/upload/v1737075746/samples/ecommerce/leather-bag-gray.jpg"
+          src={
+            postImg
+          }
           alt="Video"
           //   layout="fill"
           objectFit="cover"
@@ -53,17 +73,6 @@ function VideoContent({ onCommentClick }: { onCommentClick: () => void }) {
           height={737}
           className="w-full md:max-w-[412] h-[737] object-cover rounded-xl"
         />
-
-        <div className="absolute bottom-0 left-0 right-0 p-4">
-          <p className="mb-2">
-            When you&apos;re trying to explain to your parents that you&apos;re
-            a comedian 😂😂😂
-          </p>
-          <div className="flex items-center space-x-2">
-            <Music2 size={16} />
-            <span className="text-sm">original sound - Brain Jotter</span>
-          </div>
-        </div>
 
         {/* Action Buttons */}
         <div className="absolute bottom-20 right-4 flex flex-col items-center space-y-4 md:hidden">
@@ -102,7 +111,6 @@ function ActionButton({
     </button>
   );
 }
-
 
 function CommentSection({ onClose }: { onClose: () => void }) {
   return (
