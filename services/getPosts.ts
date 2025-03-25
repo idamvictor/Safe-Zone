@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 
 const getPosts = async () => {
   try {
-    const highlights = await axiosInstance.get("/posts/no-auth");
-    return (highlights.data.items as Post) || [];
+    const posts = await axiosInstance.get("/posts/no-auth");
+    return (posts.data.items as Post) || [];
   } catch (error) {
     console.log(error);
   }
@@ -13,7 +13,7 @@ const getPosts = async () => {
 
 export const useGetPosts = () => {
   return useQuery({
-    queryKey: ["highlights"],
+    queryKey: ["posts"],
     queryFn: getPosts,
   });
 };

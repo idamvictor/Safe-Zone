@@ -11,22 +11,45 @@ import {
   Instagram,
 } from "lucide-react";
 import Image from "next/image";
+import { useGetPost } from "@/services/getPost";
+import { useEffect, useState } from "react";
 
-export default function SocialPost() {
+type socialPostProps = {
+  postId: string;
+};
+
+export default function SocialPost({ postId }: socialPostProps) {
+  const { data: postDetails, isFetching, error } = useGetPost(postId);
+  const username = postDetails?.user.username;
+  const [currentUrl, setCurrentUrl] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  console.log(postDetails, isFetching, error);
+
+  useEffect(() => {
+    setCurrentUrl(window.location.href);
+  }, []);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(currentUrl).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   return (
     <div className="flex flex-col min-h-scree">
       {/* Profile Section */}
       <div className="flex items-center gap-3 p-4">
         <Avatar className="h-10 w-10">
-          <AvatarImage
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-AAA6jnJrdVTsdORGwk5onvntLI1ehp.png"
-            alt="User avatar"
-          />
-          <AvatarFallback>SC</AvatarFallback>
+          <AvatarImage src={postDetails?.user.image} alt={username} />
+          <AvatarFallback>{username?.slice(0, 1).toUpperCase()}</AvatarFallback>
         </Avatar>
         <div>
-          <h2 className="font-semibold">Sochima</h2>
-          <p className="text-sm text-gray-400">Sochii22</p>
+          <h2 className="font-semibold">
+            {postDetails?.user.full_name || "user"}
+          </h2>
+          <p className="text-sm text-gray-400">{postDetails?.user.username}</p>
         </div>
       </div>
 
@@ -34,19 +57,19 @@ export default function SocialPost() {
       <div className="flex items-center gap-4 px-4 py-2">
         <div className="flex items-center gap-2">
           <Heart className="w-5 h-5" />
-          <span>236</span>
+          <span>{postDetails?.likes_count}</span>
         </div>
         <div className="flex items-center gap-2">
           <Search className="w-5 h-5" />
-          <span>3.2k</span>
+          <span>{postDetails?.comments_count}</span>
         </div>
         <div className="flex items-center gap-2">
           <Bookmark className="w-5 h-5" />
-          <span>50</span>
+          <span>{postDetails?.bookmarks_count}</span>
         </div>
         <div className="flex items-center gap-2">
           <Share2 className="w-5 h-5" />
-          <span>1k</span>
+          <span>{postDetails?.share_count}</span>
         </div>
         <div className="flex items-center gap-3 ml-auto">
           <TikTokIcon className="w-5 h-5" />
@@ -58,17 +81,20 @@ export default function SocialPost() {
 
       {/* Link Section */}
       <div className="mx-4 my-2 bg-gray-900 rounded-lg p-3 flex justify-between items-center">
-        <span className="text-sm text-gray-400 truncate">
-          https://www.safezone.com/design/KOXfbP3f6yuCig4...
-        </span>
-        <Button variant="ghost" size="sm" className="text-blue-500">
-          Copy
+        <span className="text-sm text-gray-400 truncate">{currentUrl}</span>
+        <Button
+          variant="ghost"
+          size="sm"
+          className="text-blue-500"
+          onClick={handleCopy}
+        >
+          {copied ? "Copied" : "Copy"}
         </Button>
       </div>
 
       {/* Comments Section */}
       <div className="p-4">
-        <h3 className="text-gray-400 mb-4">Comments (23)</h3>
+        <h3 className="text-gray-400 mb-4">Comments ({postDetails?.comments_count})</h3>
         {[...Array(4)].map((_, i) => (
           <div key={i} className="flex gap-3 mb-6">
             <Avatar className="h-8 w-8">
